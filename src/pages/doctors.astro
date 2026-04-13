@@ -1,15 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import {
+  Stethoscope,
+  Award,
+  Clock,
+  Calendar,
+  MessageCircle,
+  Phone,
+  Star,
+  Quote,
+  ArrowRight,
+} from "lucide-react";
 
 const WA = "917006087182";
 
 const doctors = [
   {
+    id: "dr-javid-magray",
     name: "Dr. Javid Magray",
     role: "Senior Radiologist",
     qualifications: "MBBS, MD (Radiology)",
     experience: "10+ years",
-    specialties: ["USG & Doppler", "3D/4D Imaging", "Obstetric Ultrasound", "All Ultrasound Types"],
+    specialties: [
+      "USG & Doppler",
+      "3D/4D Imaging",
+      "Obstetric Ultrasound",
+      "All Ultrasound Types",
+    ],
     desc: "Dr. Javid Magray is the senior radiologist at Mir Diagnostics, Pampore. Specialising in all kinds of ultrasound imaging, he brings precision and compassionate care to every diagnosis. Available every Sunday at the centre.",
     days: "Every Sunday",
     timing: "By Appointment",
@@ -20,98 +37,230 @@ const doctors = [
 ];
 ---
 
-<Layout title="Our Doctors" description="Meet Dr. Javid Magray — Senior Radiologist at Mir Diagnostics Pampore. USG every Sunday.">
-  <!-- Hero -->
-  <div class="pt-20 text-white" style="background: linear-gradient(135deg, #0D6B3A 0%, #065f46 100%)">
-    <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
-      <span class="text-sm tracking-widest uppercase mb-3 block" style="font-family: var(--font-mono); color: rgba(255,255,255,0.6)">— Medical Team</span>
-      <h1 class="text-5xl md:text-6xl font-bold mt-1 mb-4" style="font-family: var(--font-heading)">Our Doctors</h1>
-      <p class="text-xl max-w-2xl" style="color: rgba(255,255,255,0.75)">Expert specialists delivering accurate diagnostics with compassion at Mir Diagnostics, Pampore.</p>
-    </div>
-  </div>
+<Layout
+  title="Our Doctors | Mir Diagnostics"
+  description="Meet Dr. Javid Magray — Senior Radiologist at Mir Diagnostics Pampore. Expert USG and Doppler services available every Sunday."
+>
+  <main id="main-content">
+    <section
+      class="pt-20 text-white"
+      style="background: linear-gradient(135deg, #0D6B3A 0%, #065f46 100%)"
+      aria-labelledby="doctors-hero-title"
+    >
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
+        <span
+          class="text-sm tracking-widest uppercase mb-3 block opacity-70"
+          style="font-family: var(--font-mono)">— Medical Team</span
+        >
+        <h1
+          id="doctors-hero-title"
+          class="text-5xl md:text-6xl font-bold mt-1 mb-4"
+          style="font-family: var(--font-heading)"
+        >
+          Our Doctors
+        </h1>
+        <p class="text-xl max-w-2xl text-white/80 leading-relaxed">
+          Expert specialists delivering accurate diagnostics with compassion at
+          Mir Diagnostics, Pampore.
+        </p>
+      </div>
+    </section>
 
-  <!-- Dr. Javid Magray Feature Card -->
-  <section class="section-padding">
-    <div class="container-tight">
-      {doctors.map((doc) => {
-        const waMsg = encodeURIComponent(`Hello, I want to book a USG appointment with ${doc.name} at Mir Diagnostics, Pampore.`);
-        return (
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-            <!-- Photo -->
-            <div class="rounded-2xl overflow-hidden shadow-2xl">
-              <img src={doc.img} alt={`${doc.name} — ${doc.role} at Mir Diagnostics Pampore`}
-                class="w-full object-cover" style="max-height: 600px" loading="eager" />
-            </div>
+    <section class="section-padding bg-white" aria-labelledby="team-heading">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 id="team-heading" class="sr-only">Our Specialist Doctors</h2>
 
-            <!-- Info -->
-            <div>
-              <div class="inline-block text-white text-xs font-bold px-3 py-1.5 rounded-full mb-4"
-                style="background-color: var(--color-lab-teal)">
-                ⭐ Featured Doctor
-              </div>
-              <h2 class="text-4xl font-bold mb-1" style="font-family: var(--font-heading); color: var(--color-lab-green)">{doc.name}</h2>
-              <p class="text-xl font-semibold mb-1" style="color: var(--color-lab-teal)">{doc.role}</p>
-              <p class="text-sm mb-4" style="font-family: var(--font-mono); color: var(--color-muted-foreground)">{doc.qualifications}</p>
-
-              <blockquote class="italic text-lg mb-5 pl-4 border-l-4" style="font-family: var(--font-heading); color: var(--color-lab-green); border-color: var(--color-lab-teal)">
-                "{doc.quote}"
-              </blockquote>
-
-              <p class="leading-relaxed mb-5" style="color: var(--color-muted-foreground)">{doc.desc}</p>
-
-              <div class="flex flex-wrap gap-2 mb-5">
-                {doc.specialties.map((s) => (
-                  <span class="text-xs font-medium px-3 py-1.5 rounded-full" style="background: rgba(22,163,74,0.1); color: var(--color-lab-teal)">{s}</span>
-                ))}
-              </div>
-
-              <!-- Availability -->
-              <div class="rounded-xl p-5 mb-6" style="background: var(--color-lab-light); border: 1px solid var(--color-border)">
-                <div class="grid grid-cols-3 gap-4">
-                  <div>
-                    <div class="text-xs font-mono uppercase tracking-wider mb-1" style="color: var(--color-muted-foreground)">Days</div>
-                    <div class="font-bold text-sm" style="color: var(--color-lab-green)">{doc.days}</div>
+        {
+          doctors.map((doc) => {
+            const waMsg = encodeURIComponent(
+              `Hello, I want to book a USG appointment with ${doc.name} at Mir Diagnostics, Pampore.`,
+            );
+            return (
+              <article
+                class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24"
+                aria-labelledby={`doc-name-${doc.id}`}
+              >
+                <div class="relative group w-full">
+                  <div class="rounded-4xl overflow-hidden shadow-2xl border border-gray-100 transition-transform duration-500 group-hover:scale-[1.01]">
+                    <img
+                      src={doc.img}
+                      alt={`Portrait of ${doc.name}, ${doc.role}`}
+                      class="w-full h-full object-cover"
+                      style="min-height: 500px; aspect-ratio: 4/5;"
+                      loading="eager"
+                    />
                   </div>
-                  <div>
-                    <div class="text-xs font-mono uppercase tracking-wider mb-1" style="color: var(--color-muted-foreground)">Timing</div>
-                    <div class="font-bold text-sm" style="color: var(--color-lab-green)">{doc.timing}</div>
-                  </div>
-                  <div>
-                    <div class="text-xs font-mono uppercase tracking-wider mb-1" style="color: var(--color-muted-foreground)">Experience</div>
-                    <div class="font-bold text-sm" style="color: var(--color-lab-green)">{doc.experience}</div>
+
+                  <div class="absolute top-6 right-6 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 border border-emerald-50">
+                    <Award
+                      className="w-4 h-4 text-emerald-600"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <div class="text-[9px] uppercase tracking-widest font-bold text-gray-400 leading-none">
+                        Experience
+                      </div>
+                      <div class="text-xs font-black text-emerald-900">
+                        {doc.experience}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="flex flex-wrap gap-3">
-                <a href={`https://wa.me/${WA}?text=${waMsg}`} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-                  <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z"/>
-                  </svg>
-                  Book USG Appointment
-                </a>
-                <a href="tel:+917006087182" class="btn-outline">📞 7006087182</a>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+                <div class="flex flex-col pt-4">
+                  <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6 border border-amber-100 self-start">
+                    <Star
+                      className="w-3.5 h-3.5 fill-amber-500 text-amber-500"
+                      aria-hidden="true"
+                    />
+                    Featured Specialist
+                  </div>
 
-      <!-- USG services reminder -->
-      <div class="rounded-2xl p-8 text-center text-white" style="background: linear-gradient(135deg, var(--color-lab-green), var(--color-lab-teal))">
-        <h3 class="text-2xl font-bold mb-2" style="font-family: var(--font-heading)">All Kinds of Ultrasounds Available</h3>
-        <p class="mb-6" style="color: rgba(255,255,255,0.8)">3D/4D · Abdomen · Pelvic · Obstetric · Doppler · NT/NB · Level-II · MSK · Neck & more</p>
-        <div class="flex flex-wrap gap-3 justify-center">
-          <a href="/services#usg" class="bg-white font-semibold px-7 py-3 rounded-full transition-all" style="color: var(--color-lab-green)">
-            View All USG Services →
+                  <header class="mb-6">
+                    <h3
+                      id={`doc-name-${doc.id}`}
+                      class="text-4xl md:text-5xl font-bold mb-2 text-emerald-950"
+                      style="font-family: var(--font-heading)"
+                    >
+                      {doc.name}
+                    </h3>
+                    <p class="text-xl font-bold text-emerald-600 mb-1">
+                      {doc.role}
+                    </p>
+                    <p class="text-xs font-mono tracking-widest text-gray-400 uppercase">
+                      {doc.qualifications}
+                    </p>
+                  </header>
+
+                  <div class="relative mb-8 group">
+                    <Quote
+                      className="absolute -top-4 -left-4 w-10 h-10 text-emerald-50 rotate-180"
+                      aria-hidden="true"
+                    />
+                    <blockquote
+                      class="italic text-xl text-emerald-900 leading-relaxed pl-6 border-l-4 border-emerald-500"
+                      style="font-family: var(--font-heading)"
+                    >
+                      "{doc.quote}"
+                    </blockquote>
+                  </div>
+
+                  <p class="leading-relaxed mb-8 text-gray-600 text-lg">
+                    {doc.desc}
+                  </p>
+
+                  <div
+                    class="flex flex-wrap gap-2 mb-8"
+                    aria-label="Specialties"
+                  >
+                    {doc.specialties.map((s) => (
+                      <span class="text-[11px] font-bold uppercase tracking-wider px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div class="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-100 mb-10">
+                    <div class="grid grid-cols-2 gap-8">
+                      <div class="flex items-start gap-3">
+                        <div class="p-2 bg-white rounded-lg shadow-sm">
+                          <Calendar
+                            className="w-5 h-5 text-emerald-600"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div>
+                          <div class="text-[10px] uppercase font-bold text-emerald-500 tracking-wider">
+                            Visiting Days
+                          </div>
+                          <div class="text-sm font-black text-emerald-900 uppercase">
+                            {doc.days}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-start gap-3">
+                        <div class="p-2 bg-white rounded-lg shadow-sm">
+                          <Clock
+                            className="w-5 h-5 text-emerald-600"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div>
+                          <div class="text-[10px] uppercase font-bold text-emerald-500 tracking-wider">
+                            Timing
+                          </div>
+                          <div class="text-sm font-black text-emerald-900 uppercase">
+                            {doc.timing}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-wrap gap-4">
+                    <a
+                      href={`https://wa.me/${WA}?text=${waMsg}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-whatsapp px-8 py-2 shadow-lg shadow-emerald-100 flex items-center justify-center gap-3 text-base flex-1 sm:flex-none"
+                    >
+                      <MessageCircle className="w-5 h-5" /> Book Appointment
+                    </a>
+                    <a
+                      href="tel:+917006087182"
+                      class="btn-outline px-8 py-2 flex rounded-full items-center justify-center gap-3 text-base border-emerald-100 text-emerald-800 hover:bg-emerald-50 flex-1 sm:flex-none"
+                    >
+                      <Phone className="w-4 h-4" /> Call Center
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </section>
+    <section
+      class="container-tight my-16 rounded-3xl p-10 text-white text-center shadow-2xl bg-linear-to-br from-emerald-800 to-emerald-600"
+      aria-labelledby="advance-diagnostic-imaging"
+    >
+      {/* Glassy Background Ornament */}
+      <div
+        class="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-150"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="relative z-10">
+        <h3
+          id="usg-banner-title"
+          class="text-3xl md:text-4xl font-bold mb-4"
+          style="font-family: var(--font-heading)"
+        >
+          Advanced Diagnostic Imaging
+        </h3>
+        <p class="text-lg max-w-2xl mx-auto mb-10 text-emerald-50/80">
+          Our imaging department is equipped with high-resolution technology to
+          ensure early detection and accurate results for every patient.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a
+            href="/services#usg"
+            class="bg-white text-emerald-900 font-bold px-10 py-3 rounded-full transition-all hover:bg-emerald-50 hover:shadow-xl focus:ring-4 focus:ring-white/30 flex items-center gap-2"
+          >
+            View Services <ArrowRight className="w-4 h-4" />
           </a>
-          <a href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20USG%20at%20Mir%20Diagnostics%20Pampore.`}
-            target="_blank" rel="noopener noreferrer" class="btn-whatsapp px-7 py-3">
-            Book on WhatsApp
+          <a
+            href={`https://wa.me/${WA}?text=USG%20Inquiry`}
+            target="
+              _blank"
+            rel="noopener noreferrer"
+            class="bg-emerald-800/30 backdrop-blur-md border border-white/20 text-white font-bold px-10 py-3 rounded-full transition-all hover:bg-emerald-800/50 flex items-center gap-3"
+          >
+            <MessageCircle className="w-5 h-5" /> WhatsApp Booking
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 </Layout>
