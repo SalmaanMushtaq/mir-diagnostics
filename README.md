@@ -2,17 +2,17 @@
 
 A modern, production-ready website for **Mir Diagnostics** medical laboratory, built with:
 
-| Package | Version |
-|---|---|
-| **Astro** | 6.1 |
-| **React** | 19 |
-| **Tailwind CSS** | 4.2 |
+| Package               | Version                            |
+| --------------------- | ---------------------------------- |
+| **Astro**             | 6.1                                |
+| **React**             | 19                                 |
+| **Tailwind CSS**      | 4.2                                |
 | **@tailwindcss/vite** | 4.x (replaces `@astrojs/tailwind`) |
-| **@astrojs/react** | 4.x |
-| **Embla Carousel** | 8.x |
-| **Lucide React** | 0.487+ |
-| **shadcn/ui** | Button, Card, Badge (custom) |
-| **Package manager** | **pnpm** |
+| **@astrojs/react**    | 4.x                                |
+| **Embla Carousel**    | 8.x                                |
+| **Lucide React**      | 0.487+                             |
+| **shadcn/ui**         | Button, Card, Badge (custom)       |
+| **Package manager**   | **pnpm**                           |
 
 > ⚠️ **Tailwind v4 note:** There is no `tailwind.config.js`. All theme config lives in `src/styles/globals.css` using `@theme {}`. The Vite plugin `@tailwindcss/vite` is used instead of `@astrojs/tailwind`.
 
@@ -20,13 +20,13 @@ A modern, production-ready website for **Mir Diagnostics** medical laboratory, b
 
 ## Pages
 
-| Route | Description |
-|---|---|
-| `/` | Home — Hero carousel, services overview, stats, doctors preview, CTA |
-| `/about` | About — Mission, lab services list, accreditations |
-| `/services` | Services — USG scan types, health packages, WhatsApp booking |
-| `/doctors` | Doctors — Full team profiles with specialties & availability |
-| `/contact` | Contact — Appointment booking form, contact info, map |
+| Route       | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| `/`         | Home — Hero carousel, services overview, stats, doctors preview, CTA |
+| `/about`    | About — Mission, lab services list, accreditations                   |
+| `/services` | Services — USG scan types, health packages, WhatsApp booking         |
+| `/doctors`  | Doctors — Full team profiles with specialties & availability         |
+| `/contact`  | Contact — Appointment booking form, contact info, map                |
 
 ---
 
@@ -119,15 +119,15 @@ mir-diagnostics/
 
 All tokens are CSS custom properties — use them anywhere:
 
-| Token | Value | Tailwind class |
-|---|---|---|
-| `--color-lab-blue` | `#0D6B3A` | `bg-(--color-lab-blue)` |
-| `--color-lab-teal` | `#16A34A` | `bg-(--color-lab-teal)` |
-| `--color-lab-light` | `#ECFDF5` | `bg-(--color-lab-light)` |
-| `--color-lab-gold` | `#F59E0B` | `bg-(--color-lab-gold)` |
-| `--font-heading` | Playfair Display | `style="font-family: var(--font-heading)"` |
-| `--font-body` | DM Sans | (default body font) |
-| `--font-mono` | DM Mono | `style="font-family: var(--font-mono)"` |
+| Token               | Value            | Tailwind class                             |
+| ------------------- | ---------------- | ------------------------------------------ |
+| `--color-lab-green` | `#0D6B3A`        | `bg-(--color-lab-green)`                   |
+| `--color-lab-teal`  | `#16A34A`        | `bg-(--color-lab-teal)`                    |
+| `--color-lab-light` | `#ECFDF5`        | `bg-(--color-lab-light)`                   |
+| `--color-lab-gold`  | `#F59E0B`        | `bg-(--color-lab-gold)`                    |
+| `--font-heading`    | Playfair Display | `style="font-family: var(--font-heading)"` |
+| `--font-body`       | DM Sans          | (default body font)                        |
+| `--font-mono`       | DM Mono          | `style="font-family: var(--font-mono)"`    |
 
 ---
 

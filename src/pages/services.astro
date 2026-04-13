@@ -1,0 +1,541 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const WA = "917006087182";
+
+const packages = [
+  {
+    name: "Genetic 1.4 Package",
+    params: 66,
+    discount: 38,
+    original: 4000,
+    price: 2500,
+    tests: [
+      "Complete Blood Count",
+      "Liver Function Test",
+      "Kidney Function Test",
+      "Thyroid Function Tests",
+      "Lipid Profile",
+      "Iron Deficiency Profile",
+      "HbA1c",
+      "Vit. D & Vit. B12",
+      "HIV 1&2 Quantitative",
+      "CRP Quantitative",
+      "Anti-HCV",
+      "RA Factor",
+    ],
+    highlight: true,
+  },
+  {
+    name: "Genetic 1.3 Package",
+    params: 62,
+    discount: 40,
+    original: 3000,
+    price: 1800,
+    tests: [
+      "Complete Blood Count",
+      "Liver Function Test",
+      "Kidney Function Test",
+      "Thyroid Function Tests",
+      "Lipid Profile",
+      "Iron Deficiency Profile",
+      "HbA1c",
+      "Vit. D & Vit. B12",
+    ],
+    highlight: false,
+  },
+  {
+    name: "Genetic 1.2 Package",
+    params: 60,
+    discount: 33,
+    original: 1800,
+    price: 1200,
+    tests: [
+      "Complete Blood Count",
+      "Liver Function Test",
+      "Kidney Function Test",
+      "Thyroid Function Tests",
+      "Lipid Profile",
+      "Iron Deficiency Profile",
+      "HbA1c",
+    ],
+    highlight: false,
+  },
+  {
+    name: "Genetic 1.1 Package",
+    params: 59,
+    discount: 33,
+    original: 1200,
+    price: 800,
+    tests: [
+      "Complete Blood Count",
+      "Liver Function Test",
+      "Kidney Function Test",
+      "Thyroid Function Tests",
+      "Lipid Profile",
+      "Iron Deficiency Profile",
+    ],
+    highlight: false,
+  },
+];
+---
+
+<Layout
+  title="Services – USG & Health Packages"
+  description="Mir Diagnostics Services: Advanced USG imaging and comprehensive health packages in Pampore, Kashmir."
+>
+  <!-- Hero -->
+  <div
+    class="pt-20 text-white"
+    style="background: linear-gradient(135deg, var(--color-lab-green) 0%, #074d25 50%, var(--color-lab-teal) 100%)"
+  >
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
+      <span
+        class="text-sm tracking-widest uppercase mb-3 block"
+        style="font-family: var(--font-mono); color: rgba(255,255,255,0.6)"
+        >— Diagnostics & Imaging</span
+      >
+      <h1
+        class="text-5xl md:text-6xl font-bold mt-1 mb-4"
+        style="font-family: var(--font-heading)"
+      >
+        Clinical Services
+      </h1>
+      <p class="text-xl max-w-2xl" style="color: rgba(255,255,255,0.75)">
+        Advanced USG imaging, comprehensive health packages, and full-spectrum
+        laboratory testing — all under one roof in Pampore.
+      </p>
+      <!-- Quick-jump links -->
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a
+          href="#usg"
+          class="px-5 py-2.5 rounded-full text-sm font-semibold border-2 border-white/40 text-white hover:bg-white/15 transition-all"
+          >↓ USG Services</a
+        >
+        <a
+          href="#packages"
+          class="px-5 py-2.5 rounded-full text-sm font-semibold border-2 border-white/40 text-white hover:bg-white/15 transition-all"
+          >↓ Health Packages</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ USG SECTION ══ -->
+  <section id="usg" class="section-padding">
+    <div class="container-tight">
+      <div class="text-center mb-14">
+        <span class="section-tag">Radiology & Imaging</span>
+        <h2 class="section-title">Ultrasound (USG) Services</h2>
+        <p class="section-subtitle mx-auto">
+          High-definition ultrasound imaging performed by experienced
+          radiologists — safe, fast, and non-invasive.
+        </p>
+      </div>
+
+      <!-- What is USG -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <p
+            class="leading-relaxed mb-4"
+            style="color: var(--color-muted-foreground)"
+          >
+            Ultrasonography (USG) uses high-frequency sound waves to create
+            real-time images of internal organs. Unlike X-rays, it uses no
+            ionizing radiation — making it safe even during pregnancy.
+          </p>
+          <p
+            class="leading-relaxed mb-6"
+            style="color: var(--color-muted-foreground)"
+          >
+            Our USG department uses latest-generation machines including color
+            Doppler and 4D imaging. All scans are supervised by qualified
+            radiologists with same-day reports.
+          </p>
+          <a
+            href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20USG%20scan%20at%20Mir%20Diagnostics%2C%20Pampore.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-whatsapp"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+              ></path>
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z"
+              ></path>
+            </svg>
+            Book USG on WhatsApp
+          </a>
+        </div>
+        <div
+          class="rounded-2xl p-8 border"
+          style="background: var(--color-lab-light); border-color: var(--color-border)"
+        >
+          <h3
+            class="text-xl font-semibold mb-5"
+            style="font-family: var(--font-heading); color: var(--color-lab-green)"
+          >
+            Why USG at Mir Diagnostics?
+          </h3>
+          <ul class="space-y-3">
+            {
+              [
+                "No radiation — completely safe",
+                "Real-time organ visualization",
+                "Same-day reports",
+                "Safe for pregnancy & children",
+                "Guides biopsies and procedures",
+                "Color Doppler & 4D capability",
+              ].map((a) => (
+                <li
+                  class="flex items-center gap-3 text-sm"
+                  style="color: var(--color-foreground)"
+                >
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 shrink-0"
+                    style="color: var(--color-lab-teal)"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {a}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- USG types grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {
+          [
+            {
+              title: "Abdominal USG",
+              badge: "Common",
+              prep: "Fast 4–6 hrs",
+              desc: "Liver, gallbladder, spleen, pancreas, kidneys. Detects gallstones, fatty liver, cysts, tumors.",
+            },
+            {
+              title: "Pelvic USG",
+              badge: "Gynecology",
+              prep: "Full bladder",
+              desc: "Uterus, ovaries, pelvic structures. Identifies fibroids, ovarian cysts, and pelvic pathology.",
+            },
+            {
+              title: "Obstetric USG",
+              badge: "Pregnancy",
+              prep: "Doctor's advice",
+              desc: "Fetal growth, placenta, amniotic fluid monitoring. NT scan, anomaly scan, growth scans.",
+            },
+            {
+              title: "Color Doppler",
+              badge: "Vascular",
+              prep: "No prep needed",
+              desc: "Blood flow in arteries and veins. Detects DVT, carotid stenosis, renal artery stenosis.",
+            },
+            {
+              title: "Thyroid USG",
+              badge: "Endocrine",
+              prep: "No prep needed",
+              desc: "Thyroid nodules, goiter, thyroiditis. Guides FNAC biopsies.",
+            },
+            {
+              title: "Musculoskeletal USG",
+              badge: "Orthopedic",
+              prep: "No prep needed",
+              desc: "Muscles, tendons, ligaments. Evaluates injuries, effusions, and soft tissue masses.",
+            },
+            {
+              title: "Breast USG",
+              badge: "Women's",
+              prep: "No prep needed",
+              desc: "Breast lumps and cysts. Complementary to mammography for dense breast tissue.",
+            },
+            {
+              title: "Scrotal USG",
+              badge: "Urology",
+              prep: "No prep needed",
+              desc: "Testes, epididymis. Detects varicocele, hydrocele, and torsion.",
+            },
+          ].map((s) => {
+            const waMsg = encodeURIComponent(
+              `Hello, I want to book a *${s.title}* at Mir Diagnostics, Pampore.`,
+            );
+            return (
+              <div
+                class="bg-white rounded-xl p-5 border card-hover"
+                style="border-color: var(--color-border)"
+              >
+                <div class="flex items-start justify-between mb-2">
+                  <h3
+                    class="font-semibold text-lg"
+                    style="font-family: var(--font-heading); color: var(--color-lab-green)"
+                  >
+                    {s.title}
+                  </h3>
+                  <span
+                    class="text-xs font-medium px-2.5 py-1 rounded-full shrink-0 ml-3"
+                    style="background: rgba(22,163,74,0.1); color: var(--color-lab-teal)"
+                  >
+                    {s.badge}
+                  </span>
+                </div>
+                <p
+                  class="text-sm leading-relaxed mb-3"
+                  style="color: var(--color-muted-foreground)"
+                >
+                  {s.desc}
+                </p>
+                <div
+                  class="flex items-center justify-between pt-3"
+                  style="border-top: 1px solid var(--color-border)"
+                >
+                  <span
+                    class="text-xs font-medium flex items-center gap-1"
+                    style="color: var(--color-lab-gold)"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      class="w-3.5 h-3.5"
+                    >
+                      <path
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    {s.prep}
+                  </span>
+                  <a
+                    href={`https://wa.me/${WA}?text=${waMsg}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp py-1.5 px-3 text-xs"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-3.5 h-3.5"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z" />
+                    </svg>
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div
+    class="h-2"
+    style="background: linear-gradient(90deg, var(--color-lab-green), var(--color-lab-teal))"
+  >
+  </div>
+
+  <!-- ══ HEALTH PACKAGES ══ -->
+  <section
+    id="packages"
+    class="section-padding"
+    style="background: linear-gradient(135deg, #f0fdf4, #dcfce7)"
+  >
+    <div class="container-tight">
+      <div class="text-center mb-14">
+        <span class="section-tag">Special Offers</span>
+        <h2 class="section-title">Health Packages</h2>
+        <p class="section-subtitle mx-auto">
+          Comprehensive wellness panels with up to 40% savings — book instantly
+          via WhatsApp or call us.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {
+          packages.map((pkg) => {
+            const waMsg = encodeURIComponent(
+              `Hello, I want to book the *${pkg.name}* (₹${pkg.price}) at Mir Diagnostics, Pampore.`,
+            );
+            return (
+              <div
+                class={`relative rounded-2xl overflow-hidden flex flex-col card-hover ${pkg.highlight ? "ring-2" : "border"}`}
+                style={
+                  pkg.highlight
+                    ? "background: white; --tw-ring-color: var(--color-lab-teal)"
+                    : "background: white; border-color: var(--color-border)"
+                }
+              >
+                <div
+                  class="absolute top-3 left-3 z-10 text-white text-xs font-bold px-2.5 py-1 rounded-md"
+                  style="background-color: var(--color-lab-green)"
+                >
+                  -{pkg.discount}%
+                </div>
+
+                {pkg.highlight && (
+                  <div
+                    class="absolute top-3 right-3 z-10 text-white text-xs font-bold px-2.5 py-1 rounded-md"
+                    style="background-color: var(--color-lab-gold)"
+                  >
+                    Most Popular
+                  </div>
+                )}
+
+                <div
+                  class="h-3"
+                  style={
+                    pkg.highlight
+                      ? "background: linear-gradient(90deg, var(--color-lab-green), var(--color-lab-teal))"
+                      : "background-color: var(--color-lab-teal); opacity:0.5"
+                  }
+                />
+
+                <div class="p-5 flex flex-col flex-1">
+                  <h3
+                    class="font-bold text-base uppercase tracking-wide mb-0.5"
+                    style="font-family: var(--font-heading); color: var(--color-lab-green)"
+                  >
+                    {pkg.name}
+                  </h3>
+                  <p
+                    class="text-xs font-medium mb-4"
+                    style="color: var(--color-lab-teal)"
+                  >
+                    Profile includes {pkg.params} parameters
+                  </p>
+
+                  <ul class="space-y-1.5 mb-5 flex-1">
+                    {pkg.tests.map((t) => (
+                      <li
+                        class="flex items-start gap-2 text-sm"
+                        style="color: var(--color-foreground)"
+                      >
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          class="w-4 h-4 shrink-0 mt-0.5"
+                          style="color: var(--color-lab-teal)"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div
+                    class="pt-4 border-t mb-4"
+                    style="border-color: var(--color-border)"
+                  >
+                    <span
+                      class="text-sm line-through mr-2"
+                      style="color: var(--color-muted-foreground)"
+                    >
+                      ₹{pkg.original.toLocaleString()}
+                    </span>
+                    <span
+                      class="text-2xl font-bold"
+                      style="font-family: var(--font-heading); color: var(--color-lab-green)"
+                    >
+                      ₹{pkg.price.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/${WA}?text=${waMsg}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp justify-center text-center"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-4 h-4 shrink-0"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z" />
+                    </svg>
+                    Book on WhatsApp
+                  </a>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <!-- Custom package note -->
+      <div
+        class="mt-10 rounded-2xl p-7 text-white text-center"
+        style="background: linear-gradient(135deg, var(--color-lab-green), var(--color-lab-teal))"
+      >
+        <h3
+          class="text-2xl font-bold mb-2"
+          style="font-family: var(--font-heading)"
+        >
+          Need a Custom Package?
+        </h3>
+        <p class="mb-5" style="color: rgba(255,255,255,0.8)">
+          Talk to our team and we'll create a personalised health panel tailored
+          to your needs and budget.
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a
+            href={`https://wa.me/${WA}?text=Hello%2C%20I%20need%20a%20custom%20health%20package%20at%20Mir%20Diagnostics%2C%20Pampore.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-whatsapp px-7 py-3"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+              ></path>
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z"
+              ></path>
+            </svg>
+            WhatsApp Us
+          </a>
+          <a
+            href="tel:+917006087182"
+            class="px-7 py-3 rounded-full font-semibold text-sm border-2 border-white text-white hover:bg-white/15 transition-all flex items-center gap-2"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              class="w-4 h-4"
+            >
+              <path
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path>
+            </svg>
+            Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
