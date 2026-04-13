@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Plus } from "lucide-react";
+import { Plus, Menu } from "lucide-react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -180,21 +180,9 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label="Open navigation menu"
-            className="md:hidden p-2 text-white bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 focus:ring-2 focus:ring-white"
+            className="md:hidden cursor-pointer p-1.5 text-white bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 focus:ring-2 focus:ring-white"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <Menu className="w-6 h-6" />
           </button>
         </div>
       </header>
