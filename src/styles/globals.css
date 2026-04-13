@@ -340,4 +340,8 @@
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+  .nav-link-active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 }
