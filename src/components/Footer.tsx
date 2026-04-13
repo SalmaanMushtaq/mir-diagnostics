@@ -84,10 +84,6 @@ export default function Footer() {
                     className="group text-sm link-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-[1px] flex items-center gap-1"
                     style={{ color: "rgba(255,255,255,0.9)" }}
                   >
-                    <ChevronRight
-                      className="w-3 h-3 text-green-400 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all"
-                      aria-hidden="true"
-                    />
                     {link.label}
                   </a>
                 </li>
