@@ -97,10 +97,10 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
               key={link.href}
               href={link.href}
               aria-current={currentPath === link.href ? "page" : undefined}
-              className={`p-3 rounded-xl transition-colors ${
+              className={`p-3 rounded-xl transition-colors link-underline ${
                 currentPath === link.href
                   ? "bg-white/20 text-white font-semibold"
-                  : "text-white/70 hover:text-white hover:bg-white/5"
+                  : "text-white/70"
               }`}
             >
               {link.label}
@@ -153,7 +153,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
                     aria-current={
                       currentPath === link.href ? "page" : undefined
                     }
-                    className={`text-base font-medium transition-colors hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-[1px] ${
+                    className={`text-base font-medium transition-colors link-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-[1px] ${
                       currentPath === link.href
                         ? "text-white  underline underline-offset-4"
                         : "text-white"
