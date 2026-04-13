@@ -317,3 +317,27 @@
     box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
   }
 }
+@layer utilities {
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}

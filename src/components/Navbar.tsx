@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-
+import { Plus, Menu } from "lucide-react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -14,6 +14,10 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  // Refs for Focus Management
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -21,18 +25,31 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when menu open
+  // Handle Focus Trap and Escape Key
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = open ? "hidden" : "";
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    if (open) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+      // Move focus to close button when drawer opens
+      setTimeout(() => closeBtnRef.current?.focus(), 100);
+    } else {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+      // Return focus to menu button when drawer closes
+      menuBtnRef.current?.focus();
     }
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
   const drawer = (
     <>
-      {/* Backdrop */}
       <div
         onClick={() => setOpen(false)}
+        aria-hidden="true"
         className="fixed inset-0 z-998 transition-opacity duration-300"
         style={{
           backgroundColor: "rgba(0,0,0,0.5)",
@@ -42,14 +59,19 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         }}
       />
 
-      {/* Slide-in drawer */}
-      <div
+      {/* Side-in drawer */}
+      <aside
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
         className="fixed top-0 right-0 bottom-0 z-999 shadow-2xl transition-transform duration-300 ease-in-out"
         style={{
           width: "min(82vw, 300px)",
-          background: "rgba(6, 60, 28, 0.5)",
+          background: "rgb(6, 60, 28)",
           backdropFilter: "blur(20px)",
           transform: open ? "translateX(0)" : "translateX(100%)",
+          visibility: open ? "visible" : "hidden",
         }}
       >
         <div className="flex items-center justify-between p-5 border-b border-white/10">
@@ -60,31 +82,22 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             </div>
           </div>
           <button
+            ref={closeBtnRef}
             onClick={() => setOpen(false)}
-            className="p-2 bg-white/10 rounded-lg text-white"
+            aria-label="Close menu"
+            className="p-2 bg-white/10 rounded-lg cursor-pointer text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <Plus className="w-6 h-6 rotate-45" />
           </button>
         </div>
 
-        <nav className="p-4 flex flex-col gap-2">
+        <nav aria-label="Mobile Menu Links" className="p-4 flex flex-col gap-2">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`p-3 rounded-xl transition-colors ${
+              aria-current={currentPath === link.href ? "page" : undefined}
+              className={`p-3 rounded-xl transition-colors link-underline ${
                 currentPath === link.href
                   ? "bg-white/20 text-white font-semibold"
                   : "text-white/70"
@@ -94,7 +107,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             </a>
           ))}
         </nav>
-      </div>
+      </aside>
     </>
   );
 
@@ -105,16 +118,21 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
           scrolled ? "shadow-lg" : ""
         }`}
         style={{
-          // backdropFilter: "blur(16px) saturate(180%)",
-          // WebkitBackdropFilter: "blur(16px) saturate(180%)",
           backgroundColor: scrolled ? "rgb(11 38 24)" : "transparent",
           borderBottom: "1px solid rgba(255, 255, 255, 0.125)",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center border border-white/30">
+          <a
+            href="/"
+            className="flex items-center gap-3"
+            aria-label="Mir Diagnostics Home"
+          >
+            <div
+              className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center border border-white/30"
+              aria-hidden="true"
+            >
               <span className="text-white font-bold">M</span>
             </div>
             <span className="text-white font-bold text-xl tracking-tight">
@@ -122,48 +140,49 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             </span>
           </a>
 
-          {/* Desktop Links: Hidden on mobile, Flex on md+ */}
-          <nav className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={`text-base font-medium transition-colors hover:text-green-400 ${
-                  currentPath === link.href
-                    ? "text-white border-b-2 border-green-400"
-                    : "text-white"
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+          {/* Main Desktop Navigation */}
+          <nav
+            className="hidden md:flex items-center gap-8"
+            aria-label="Main Navigation"
+          >
+            <ul className="flex items-center gap-8 list-none">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    aria-current={
+                      currentPath === link.href ? "page" : undefined
+                    }
+                    className={`text-base font-medium transition-colors link-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-[1px] ${
+                      currentPath === link.href
+                        ? "text-white  underline underline-offset-4"
+                        : "text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <a
               href="/contact"
-              className="bg-white text-emerald-900 px-5 py-2 rounded-full font-bold text-sm hover:bg-green-100 transition-colors"
+              className="bg-white text-emerald-900 px-5 py-2 rounded-full font-bold text-sm hover:bg-green-100 focus:ring-2 focus:ring-offset-2 focus:ring-white transition-colors"
             >
               Book Now
             </a>
           </nav>
 
-          {/* Mobile Menu Button: Visible only on mobile, hidden on md+ */}
+          {/* Mobile Menu Trigger */}
           <button
+            ref={menuBtnRef}
             type="button"
             onClick={() => setOpen(true)}
-            className="cursor-pointer md:hidden p-2 text-white bg-white/10 rounded-lg border border-white/20"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label="Open navigation menu"
+            className="md:hidden cursor-pointer p-1.5 text-white bg-white/10 rounded-lg border border-white/20 hover:bg-white/20 focus:ring-2 focus:ring-white"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <Menu className="w-6 h-6" />
           </button>
         </div>
       </header>
