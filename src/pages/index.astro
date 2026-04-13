@@ -218,7 +218,7 @@ const contactStats = [
           </p>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {
             packages.map((pkg) => {
               const waMsg = encodeURIComponent(
@@ -233,7 +233,7 @@ const contactStats = [
                 <section
                   class={`group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
                     pkg.highlight
-                      ? "border-emerald-500 ring-1 ring-emerald-200"
+                      ? "border-emerald-500 ring-1 ring-emerald-200 lg:scale-105"
                       : "border-emerald-100"
                   }`}
                   aria-labelledby={`pkg-name-${pkg.id}`}
