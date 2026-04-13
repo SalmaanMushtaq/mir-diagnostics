@@ -1,0 +1,627 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroCarousel from "../components/HeroCarousel";
+import { PhoneCall } from "lucide-react";
+
+const WA = "917006087182";
+
+const packages = [
+  {
+    id: "bp11",
+    name: "Body Profile 1.1",
+    price: 600,
+    originalPrice: 1200,
+    highlight: false,
+    img: "/pkg-profile11-600.jpg",
+    tests: [
+      "Thyroid Profile",
+      "CBC",
+      "Lipid Profile",
+      "KFT",
+      "LFT",
+      "Calcium",
+      "Electrolytes",
+    ],
+  },
+  {
+    id: "bp12a",
+    name: "Body Profile 1.2",
+    price: 999,
+    originalPrice: 2000,
+    highlight: false,
+    img: "/pkg-profile12-999.jpg",
+    tests: [
+      "Thyroid Profile",
+      "CBC",
+      "Lipid Profile",
+      "KFT",
+      "LFT",
+      "Calcium",
+      "Electrolytes",
+      "HbA1c",
+      "Iron Profile",
+    ],
+  },
+  {
+    id: "bp12b",
+    name: "Body Profile 1.3",
+    price: 1499,
+    originalPrice: 3000,
+    highlight: true,
+    img: "/pkg-profile12-1499.jpg",
+    tests: [
+      "Thyroid Profile",
+      "CBC",
+      "Lipid Profile",
+      "KFT",
+      "LFT",
+      "Calcium",
+      "Electrolytes",
+      "HbA1c",
+      "Vitamin D",
+      "Vitamin B12",
+      "Testosterone",
+    ],
+  },
+  {
+    id: "bp3",
+    name: "Body Profile 3",
+    price: 1499,
+    originalPrice: 3500,
+    highlight: false,
+    img: "/body-profile-3.jpg",
+    tests: [
+      "Vitamin D3",
+      "Vitamin B12",
+      "Testosterone",
+      "Thyroid Profile",
+      "HbA1c",
+      "Iron Profile",
+      "CBC",
+      "ESR",
+      "Lipid Profile",
+      "LFT",
+      "Electrolytes",
+    ],
+  },
+];
+---
+
+<Layout title="Home">
+  <HeroCarousel client:load />
+
+  <!-- Stats Bar -->
+  <section
+    class="bg-white"
+    style="border-bottom: 1px solid var(--color-border)"
+  >
+    <article class="max-w-7xl mx-auto px-4 md:px-8">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4"
+        style="divide: var(--color-border)"
+      >
+        {
+          [
+            { num: "7006087182", label: "📞 Call / WhatsApp" },
+            { num: "9055998899", label: "📞 Alternate Number" },
+            { num: "Mon–Sat", label: "⏰ Lab Timings" },
+            { num: "Sunday", label: "📡 USG by Dr. Javid Magray" },
+          ].map((s) => (
+            <div
+              class="py-6 px-4 text-center border-r last:border-r-0"
+              style="border-color: var(--color-border)"
+            >
+              <div
+                class="font-bold text-lg md:text-xl"
+                style="font-family: var(--font-heading); color: var(--color-lab-green)"
+              >
+                {s.num}
+              </div>
+              <div
+                class="text-xs mt-1"
+                style="color: var(--color-muted-foreground)"
+              >
+                {s.label}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </article>
+  </section>
+
+  <!-- ══ HEALTH PACKAGES ══ -->
+  <section
+    class="section-padding"
+    style="background: linear-gradient(160deg, #f0fdf4 0%, #dcfce7 60%, #ecfdf5 100%)"
+  >
+    <article class="container-tight">
+      <div class="text-center mb-12">
+        <span class="section-tag">Special Offers</span>
+        <h2 class="section-title">Health Test Packages</h2>
+        <p class="section-subtitle mx-auto">
+          Real packages from Mir Diagnostics Pampore — book instantly via
+          WhatsApp.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {
+          packages.map((pkg) => {
+            const waMsg = encodeURIComponent(
+              `Hello, I want to book *${pkg.name}* (₹${pkg.price}) at Mir Diagnostics, Pampore (Khrew Bus Stop, Namblabal). Please confirm.`,
+            );
+            const discount = Math.round(
+              (1 - pkg.price / pkg.originalPrice) * 100,
+            );
+            return (
+              <div
+                class={`relative rounded-2xl overflow-hidden flex flex-col card-hover bg-white ${pkg.highlight ? "shadow-xl" : "shadow-sm border"}`}
+                style={
+                  pkg.highlight
+                    ? "border: 2px solid var(--color-lab-teal); box-shadow: 0 12px 40px rgba(22,163,74,0.2)"
+                    : "border-color: var(--color-border)"
+                }
+              >
+                {/* Discount badge */}
+                <div
+                  class="absolute top-3 left-3 z-10 text-white text-xs font-bold px-2 py-1 rounded-md"
+                  style="background-color: var(--color-lab-green)"
+                >
+                  -{discount}%
+                </div>
+
+                {pkg.highlight && (
+                  <div
+                    class="absolute top-3 right-3 z-10 text-white text-xs font-bold px-2 py-1 rounded-md"
+                    style="background-color: var(--color-lab-gold)"
+                  >
+                    ⭐ Popular
+                  </div>
+                )}
+
+                {/* Package image */}
+                <div class="w-full overflow-hidden" style="height: 180px">
+                  <img
+                    src={pkg.img}
+                    alt={pkg.name}
+                    class="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div class="p-4 flex flex-col flex-1">
+                  <h3
+                    class="font-bold text-base mb-1"
+                    style="font-family: var(--font-heading); color: var(--color-lab-green)"
+                  >
+                    {pkg.name}
+                  </h3>
+
+                  <ul class="space-y-1 mb-4 flex-1">
+                    {pkg.tests.map((t) => (
+                      <li
+                        class="flex items-center gap-2 text-xs"
+                        style="color: var(--color-foreground)"
+                      >
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          class="w-3.5 h-3.5 shrink-0"
+                          style="color: var(--color-lab-teal)"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div
+                    class="pt-3 border-t mb-3"
+                    style="border-color: var(--color-border)"
+                  >
+                    <span
+                      class="text-xs line-through mr-2"
+                      style="color: var(--color-muted-foreground)"
+                    >
+                      ₹{pkg.originalPrice.toLocaleString()}
+                    </span>
+                    <span
+                      class="text-2xl font-black"
+                      style="font-family: var(--font-heading); color: var(--color-lab-green)"
+                    >
+                      ₹{pkg.price.toLocaleString()}
+                    </span>
+                    <span
+                      class="text-xs ml-1"
+                      style="color: var(--color-muted-foreground)"
+                    >
+                      only
+                    </span>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/${WA}?text=${waMsg}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-whatsapp justify-center text-center text-sm py-2.5"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      class="w-4 h-4 shrink-0"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z" />
+                    </svg>
+                    Book on WhatsApp
+                  </a>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/services#packages" class="btn-outline"
+          >View All Packages & USG Services →</a
+        >
+      </div>
+    </article>
+  </section>
+
+  <!-- Home Collection Banner -->
+  <section class="py-10 px-4" style="background-color: var(--color-lab-green)">
+    <article class="container-tight">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-white">
+          <span
+            class="text-xs font-mono tracking-widest uppercase mb-2 block"
+            style="color: rgba(255,255,255,0.6)"
+            >— Pampore & Surrounding Areas</span
+          >
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-3"
+            style="font-family: var(--font-heading)"
+          >
+            Blood Test at Home in Pampore
+          </h2>
+          <p class="mb-6" style="color: rgba(255,255,255,0.75)">
+            We come to you — sample collection at your doorstep. Available
+            across Pampore, Khrew, Namblabal and nearby areas.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={`https://wa.me/${WA}?text=Hello%2C%20I%20need%20home%20blood%20test%20collection%20in%20Pampore.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                ></path>
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z"
+                ></path>
+              </svg>
+              Book Home Collection
+            </a>
+            <a
+              href="tel:+917006087182"
+              class="border-2 border-white text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-white/15 transition-all flex items-center gap-2"
+            >
+              <PhoneCall className="w-4 h-4 text-red-500" />
+              7006087182
+            </a>
+          </div>
+        </div>
+        <div
+          class="rounded-xl overflow-hidden shadow-2xl"
+          style="max-height: 260px"
+        >
+          <img
+            src="/home-collection-pampore.jpg"
+            alt="Blood test at home in Pampore — Mir Diagnostics"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Dr. Javid Magray USG Feature -->
+  <section
+    class="section-padding"
+    style="background: linear-gradient(135deg, #ecfdf5 0%, white 100%)"
+  >
+    <article class="container-tight">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Doctor card -->
+        <div
+          class="rounded-2xl overflow-hidden shadow-xl"
+          style="max-height: 560px"
+        >
+          <img
+            src="/dr-javid-magray.jpg"
+            alt="Dr. Javid Magray — Senior Radiologist at Mir Diagnostics Pampore"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div>
+          <span class="section-tag">Every Sunday</span>
+          <h2 class="section-title mb-1">Dr. Javid Magray</h2>
+          <p
+            class="text-lg font-semibold mb-4"
+            style="color: var(--color-lab-teal)"
+          >
+            Senior Radiologist
+          </p>
+          <blockquote
+            class="italic text-xl mb-5 pl-4 border-l-4"
+            style="color: var(--color-lab-green); border-color: var(--color-lab-teal); font-family: var(--font-heading)"
+          >
+            "Precision in every image, care in every diagnosis."
+          </blockquote>
+          <ul class="space-y-2 mb-6">
+            {
+              [
+                "Advanced Imaging",
+                "Accurate Reports",
+                "Compassionate Care",
+                "All kinds of Ultrasounds Available",
+              ].map((f) => (
+                <li
+                  class="flex items-center gap-3 text-sm font-medium"
+                  style="color: var(--color-foreground)"
+                >
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 shrink-0"
+                    style="color: var(--color-lab-teal)"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  {f}
+                </li>
+              ))
+            }
+          </ul>
+          <div
+            class="p-4 rounded-xl mb-6"
+            style="background: var(--color-lab-light); border: 1px solid var(--color-border)"
+          >
+            <p
+              class="text-sm font-semibold"
+              style="color: var(--color-lab-green)"
+            >
+              📅 Available every <strong>Sunday</strong> at Mir Diagnostics, Pampore
+            </p>
+            <p
+              class="text-xs mt-1"
+              style="color: var(--color-muted-foreground)"
+            >
+              Khrew Bus Stop, Namblabal, Pampore
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20USG%20with%20Dr.%20Javid%20Magray%20on%20Sunday%20at%20Mir%20Diagnostics%20Pampore.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp"
+            >
+              Book USG Appointment
+            </a>
+            <a href="/services#usg" class="btn-outline">View USG Services →</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- USG Facilities -->
+  <section
+    class="section-padding"
+    style="background-color: var(--color-lab-light)"
+  >
+    <article class="container-tight">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="section-tag">Imaging Centre</span>
+          <h2 class="section-title mb-4">USG Facilities at Mir Diagnostics</h2>
+          <div class="grid grid-cols-2 gap-2 mb-6">
+            {
+              [
+                "3D/4D Ultrasounds",
+                "USG Abdomen",
+                "USG Pelvic Organs",
+                "USG Chest",
+                "Obstetric Ultrasound",
+                "Dating & Cardiac Scan",
+                "NT/NB Scan",
+                "Level-II Scan (Fetal)",
+                "Doppler",
+                "High Resolution",
+                "USG Scrotum",
+                "MSK USG",
+                "USG Neck",
+              ].map((f) => (
+                <div
+                  class="flex items-center gap-2 text-sm py-1.5 px-3 rounded-lg"
+                  style="background: white; color: var(--color-foreground); border: 1px solid var(--color-border)"
+                >
+                  <span
+                    class="w-2 h-2 rounded-full shrink-0"
+                    style="background-color: var(--color-lab-teal)"
+                  />
+                  {f}
+                </div>
+              ))
+            }
+          </div>
+          <a href="/services#usg" class="btn-primary">Book USG Scan →</a>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src="/usg-facilities.jpg"
+            alt="USG Facilities at Mir Diagnostics Pampore"
+            class="w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Lab Photo + Why Us -->
+  <section
+    class="section-padding"
+    style="background: linear-gradient(135deg, var(--color-lab-green) 0%, #064e27 100%)"
+  >
+    <article class="container-tight">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="text-white">
+          <span
+            class="text-xs font-mono tracking-widest uppercase mb-3 block"
+            style="color: rgba(255,255,255,0.6)">— Why Mir Diagnostics</span
+          >
+          <h2
+            class="text-4xl md:text-5xl font-bold leading-tight mb-6"
+            style="font-family: var(--font-heading)"
+          >
+            Your Health, Our Priority
+          </h2>
+          <p
+            class="text-lg leading-relaxed mb-8"
+            style="color: rgba(255,255,255,0.75)"
+          >
+            Serving Pampore and the Kashmir Valley with accurate, affordable
+            diagnostics. Our lab is equipped with modern instruments operated by
+            qualified professionals.
+          </p>
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            {
+              [
+                {
+                  icon: "⚡",
+                  title: "Fast Reports",
+                  desc: "Most results same day",
+                },
+                {
+                  icon: "🏠",
+                  title: "Home Collection",
+                  desc: "We come to you",
+                },
+                {
+                  icon: "📡",
+                  title: "USG Every Sunday",
+                  desc: "Dr. Javid Magray",
+                },
+                { icon: "💚", title: "Affordable", desc: "Packages from ₹600" },
+              ].map((f) => (
+                <div
+                  class="rounded-xl p-4"
+                  style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1)"
+                >
+                  <div class="text-2xl mb-2">{f.icon}</div>
+                  <h4
+                    class="font-semibold text-sm"
+                    style="font-family: var(--font-heading)"
+                  >
+                    {f.title}
+                  </h4>
+                  <p
+                    class="text-xs mt-0.5"
+                    style="color: rgba(255,255,255,0.6)"
+                  >
+                    {f.desc}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+          <a
+            href="/about"
+            class="btn-outline"
+            style="border-color: white; color: white">About Our Lab →</a
+          >
+        </div>
+        <!-- Real lab photo -->
+        <div
+          class="rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20"
+        >
+          <img
+            src="/lab-reception.jpg"
+            alt="Mir Diagnostic Centre reception — Pampore"
+            class="w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 container-tight">
+    <article
+      class="rounded-2xl p-7 text-white text-center"
+      style="background: linear-gradient(135deg, var(--color-lab-green), var(--color-lab-teal))"
+    >
+      <h2
+        class="text-2xl font-bold mb-2"
+        style="font-family: var(--font-heading)"
+      >
+        Book Your Test Today
+      </h2>
+
+      <p class="mb-2" style="color: rgba(255,255,255,0.8)">
+        Khrew Bus Stop, Namblabal, Pampore — J&amp;K 192121
+      </p>
+
+      <p class="mb-5 text-sm" style="color: rgba(255,255,255,0.8)">
+        Mon–Sat: Lab open · Sunday: USG with Dr. Javid Magray
+      </p>
+
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a
+          href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20test%20at%20Mir%20Diagnostics%20Pampore.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp px-7 py-3"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+            ></path>
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.548 5.875L.057 23.886a.5.5 0 00.612.612l6.011-1.491A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.87 9.87 0 01-5.022-1.373l-.36-.214-3.733.926.944-3.648-.234-.375A9.865 9.865 0 012.118 12C2.118 6.48 6.48 2.118 12 2.118S21.882 6.48 21.882 12 17.52 21.882 12 21.882z"
+            ></path>
+          </svg>
+          Book on WhatsApp
+        </a>
+
+        <a
+          href="tel:+917006087182"
+          class="px-7 py-3 rounded-full font-semibold text-sm border-2 border-white text-white hover:bg-white/15 transition-all flex items-center gap-2"
+        >
+          <PhoneCall className="w-4 h-4" />
+          Call Now
+        </a>
+      </div>
+    </article>
+  </section>
+</Layout>
