@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Plus, Menu } from "lucide-react";
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -9,14 +10,21 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
+const normalizePath = (path: string) => {
+  if (!path) return "/";
+  const cleaned = path.replace(/\/+$/, "");
+  return cleaned || "/";
+};
+
 export default function Navbar({ currentPath }: { currentPath: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Refs for Focus Management
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
+
+  const activePath = normalizePath(currentPath);
 
   useEffect(() => {
     setMounted(true);
@@ -25,7 +33,6 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Handle Focus Trap and Escape Key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -34,14 +41,13 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
     if (open) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleKeyDown);
-      // Move focus to close button when drawer opens
       setTimeout(() => closeBtnRef.current?.focus(), 100);
     } else {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
-      // Return focus to menu button when drawer closes
       menuBtnRef.current?.focus();
     }
+
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
@@ -59,7 +65,6 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         }}
       />
 
-      {/* Side-in drawer */}
       <aside
         id="mobile-menu"
         role="dialog"
@@ -92,20 +97,24 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         </div>
 
         <nav aria-label="Mobile Menu Links" className="p-4 flex flex-col gap-2">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              aria-current={currentPath === link.href ? "page" : undefined}
-              className={`p-3 rounded-xl transition-colors link-underline ${
-                currentPath === link.href
-                  ? "bg-white/20 text-white font-semibold"
-                  : "text-white/70"
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isActive = activePath === normalizePath(link.href);
+
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`p-3 rounded-xl transition-colors link-underline ${
+                  isActive
+                    ? "bg-white/20 text-white font-semibold"
+                    : "text-white/70"
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
       </aside>
     </>
@@ -123,7 +132,6 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
           <a
             href="/"
             className="flex items-center gap-3"
@@ -140,30 +148,30 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             </span>
           </a>
 
-          {/* Main Desktop Navigation */}
           <nav
             className="hidden md:flex items-center gap-8"
             aria-label="Main Navigation"
           >
             <ul className="flex items-center gap-8 list-none">
-              {links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    aria-current={
-                      currentPath === link.href ? "page" : undefined
-                    }
-                    className={`text-base font-medium transition-colors link-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-[1px] ${
-                      currentPath === link.href
-                        ? "text-white  underline underline-offset-4"
-                        : "text-white"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {links.map((link) => {
+                const isActive = activePath === normalizePath(link.href);
+
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`text-base font-medium transition-colors link-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white rounded-[1px] ${
+                        isActive ? "text-white nav-link-active" : "text-white"
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
+
             <a
               href="/contact"
               className="bg-white text-emerald-900 px-5 py-2 rounded-full font-bold text-sm hover:bg-green-100 focus:ring-2 focus:ring-offset-2 focus:ring-white transition-colors"
@@ -172,7 +180,6 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             </a>
           </nav>
 
-          {/* Mobile Menu Trigger */}
           <button
             ref={menuBtnRef}
             type="button"
