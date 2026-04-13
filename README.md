@@ -1,4 +1,4 @@
-  # Mir Diagnostics — Website
+# Mir Diagnostics — Website
 
 A modern, production-ready website for **Mir Diagnostics** medical laboratory, built with:
 
@@ -24,7 +24,7 @@ A modern, production-ready website for **Mir Diagnostics** medical laboratory, b
 |---|---|
 | `/` | Home — Hero carousel, services overview, stats, doctors preview, CTA |
 | `/about` | About — Mission, lab services list, accreditations |
-| `/usg` | USG — Ultrasound scan types, equipment, preparation info |
+| `/services` | Services — USG scan types, health packages, WhatsApp booking |
 | `/doctors` | Doctors — Full team profiles with specialties & availability |
 | `/contact` | Contact — Appointment booking form, contact info, map |
 
@@ -75,7 +75,15 @@ pnpm preview
 ```
 mir-diagnostics/
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   ├── pkg-profile11-600.jpg       ← Body Profile 1.1 package image
+│   ├── pkg-profile12-999.jpg       ← Body Profile 1.2 package image
+│   ├── pkg-profile12-1499.jpg      ← Body Profile 1.3 package image
+│   ├── body-profile-3.jpg          ← Body Profile 3 package image
+│   ├── home-collection-pampore.jpg ← Home collection banner
+│   ├── dr-javid-magray.jpg         ← Dr. Javid Magray photo
+│   ├── lab-reception.jpg           ← Lab reception photo
+│   └── usg-facilities.jpg          ← USG facilities flyer
 ├── src/
 │   ├── components/
 │   │   ├── ui/
@@ -84,6 +92,7 @@ mir-diagnostics/
 │   │   │   └── badge.tsx
 │   │   ├── Navbar.tsx
 │   │   ├── HeroCarousel.tsx
+│   │   ├── FloatingActions.tsx     ← Floating WhatsApp + Call buttons
 │   │   └── Footer.tsx
 │   ├── layouts/
 │   │   └── Layout.astro
@@ -92,7 +101,7 @@ mir-diagnostics/
 │   ├── pages/
 │   │   ├── index.astro
 │   │   ├── about.astro
-│   │   ├── usg.astro
+│   │   ├── services.astro
 │   │   ├── doctors.astro
 │   │   └── contact.astro
 │   └── styles/
@@ -112,10 +121,10 @@ All tokens are CSS custom properties — use them anywhere:
 
 | Token | Value | Tailwind class |
 |---|---|---|
-| `--color-lab-blue` | `#0A3D6B` | `bg-(--color-lab-blue)` |
-| `--color-lab-teal` | `#0E9F9F` | `bg-(--color-lab-teal)` |
-| `--color-lab-light` | `#E8F4FD` | `bg-(--color-lab-light)` |
-| `--color-lab-gold` | `#D4A017` | `bg-(--color-lab-gold)` |
+| `--color-lab-blue` | `#0D6B3A` | `bg-(--color-lab-blue)` |
+| `--color-lab-teal` | `#16A34A` | `bg-(--color-lab-teal)` |
+| `--color-lab-light` | `#ECFDF5` | `bg-(--color-lab-light)` |
+| `--color-lab-gold` | `#F59E0B` | `bg-(--color-lab-gold)` |
 | `--font-heading` | Playfair Display | `style="font-family: var(--font-heading)"` |
 | `--font-body` | DM Sans | (default body font) |
 | `--font-mono` | DM Mono | `style="font-family: var(--font-mono)"` |
@@ -125,10 +134,13 @@ All tokens are CSS custom properties — use them anywhere:
 ## Customization
 
 - **Lab name / info** → `Navbar.tsx`, `Footer.tsx`, and page files
-- **Doctor profiles** → `doctors` array in `src/pages/doctors.astro`
+- **Doctor profiles** → `src/pages/doctors.astro`
 - **Hero slides** → `slides` array in `src/components/HeroCarousel.tsx`
+- **Health packages** → `packages` array in `src/pages/index.astro` and `src/pages/services.astro`
+- **WhatsApp number** → search `917006087182` and replace with your number across all files
+- **Phone numbers** → `FloatingActions.tsx`, `Footer.tsx`, `contact.astro`, `Navbar.tsx`
 - **Brand colors** → `@theme {}` block in `src/styles/globals.css`
-- **Contact details** → `Footer.tsx` and `contact.astro`
+- **Address** → `Footer.tsx` and `contact.astro` (currently: Khrew Bus Stop, Namblabal, Pampore)
 
 ---
 
@@ -138,4 +150,3 @@ All tokens are CSS custom properties — use them anywhere:
 pnpm build
 # Deploy ./dist/ to Vercel, Netlify, Cloudflare Pages, or any static host
 ```
-
