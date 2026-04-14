@@ -85,7 +85,7 @@ export default function Footer() {
               {[
                 {
                   icon: MapPin,
-                  text: "Main Chowk, Pampore, J&K — 192121",
+                  text: "Khrew Bus Stop Tulbag Road, Namblabal, Pampore, J&K — 192121",
                   srLabel: "Location:",
                 },
                 {
