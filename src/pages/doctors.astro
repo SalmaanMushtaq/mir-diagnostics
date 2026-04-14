@@ -1,16 +1,7 @@
 ---
+import WhatsAppIcon from "@/components/whatsapImg";
 import Layout from "../layouts/Layout.astro";
-import {
-  Stethoscope,
-  Award,
-  Clock,
-  Calendar,
-  MessageCircle,
-  Phone,
-  Star,
-  Quote,
-  ArrowRight,
-} from "lucide-react";
+import { BadgeCheck, CalendarDays, Clock, MoveRight,PhoneCall } from "lucide-react";
 
 const WA = "917006087182";
 
@@ -21,246 +12,332 @@ const doctors = [
     role: "Senior Radiologist",
     qualifications: "MBBS, MD (Radiology)",
     experience: "10+ years",
-    specialties: [
-      "USG & Doppler",
-      "3D/4D Imaging",
-      "Obstetric Ultrasound",
-      "All Ultrasound Types",
-    ],
-    desc: "Dr. Javid Magray is the senior radiologist at Mir Diagnostics, Pampore. Specialising in all kinds of ultrasound imaging, he brings precision and compassionate care to every diagnosis. Available every Sunday at the centre.",
+    specialties: ["USG & Doppler","3D/4D Imaging","Obstetric Ultrasound","All Ultrasound Types"],
+    desc: "Dr. Javid Magray is the senior radiologist at Mir Diagnostics, Pampore. Specialising in all kinds of ultrasound imaging, he brings precision and compassionate care to every diagnosis.",
     days: "Every Sunday",
     timing: "By Appointment",
     img: "/dr-javid-magray.jpg",
     quote: "Precision in every image, care in every diagnosis.",
     highlight: true,
+    useRealPhoto: true,
+  },
+  {
+    id: "dr-musadiq-rafiq",
+    name: "Dr. Musadiq Rafiq",
+    role: "Radiologist",
+    qualifications: "MBBS, MD",
+    experience: "8+ years",
+    specialties: ["Diagnostic Radiology","Interventional USG","CT Interpretation","X-Ray Reporting"],
+    desc: "Dr. Musadiq Rafiq is a qualified radiologist with extensive experience in diagnostic radiology and ultrasound-guided procedures. He ensures accurate, timely reporting for all imaging investigations.",
+    days: "Mon – Sat",
+    timing: "9:00 AM – 4:00 PM",
+    img: null,
+    quote: "Every image tells a story — my job is to read it accurately.",
+    highlight: false,
+    useRealPhoto: false,
+    icon: "🩺",
+    accent: "#0369A1",
+  },
+  {
+    id: "dr-m-arif",
+    name: "Dr. M. Arif",
+    role: "Sonologist",
+    qualifications: "MBBS, DMRD",
+    experience: "7+ years",
+    specialties: ["Sonography","Abdominal USG","Pelvic USG","Obstetric Scans"],
+    desc: "Dr. M. Arif is a dedicated sonologist specialising in abdominal, pelvic and obstetric ultrasound. His attention to detail and patient-centric approach ensures diagnostic clarity for every scan.",
+    days: "Mon – Sat",
+    timing: "10:00 AM – 5:00 PM",
+    img: null,
+    quote: "Clear imaging is the foundation of correct treatment.",
+    highlight: false,
+    useRealPhoto: false,
+    icon: "📡",
+    accent: "#0891B2",
+  },
+  {
+    id: "dr-aijaz-ahmad",
+    name: "Dr. Aijaz Ahmad",
+    role: "Gynaecologist",
+    qualifications: "MBBS, MS (Gynaecology)",
+    experience: "12+ years",
+    specialties: ["Obstetrics & Gynaecology","Antenatal Care","High-Risk Pregnancy","Infertility"],
+    desc: "Dr. Aijaz Ahmad is an experienced gynaecologist providing comprehensive women's healthcare including antenatal monitoring, high-risk pregnancy management, and gynaecological consultations.",
+    days: "Mon, Wed, Fri",
+    timing: "10:00 AM – 2:00 PM",
+    img: null,
+    quote: "Women's health is at the heart of every family's wellbeing.",
+    highlight: false,
+    useRealPhoto: false,
+    icon: "👩‍⚕️",
+    accent: "#DB2777",
+  },
+  {
+    id: "dr-bashir-ahmad",
+    name: "Dr. Bashir Ahmad",
+    role: "Urologist",
+    qualifications: "MBBS, DGO",
+    experience: "15+ years",
+    specialties: ["Gynaecology","Maternal-Fetal Medicine","Reproductive Health","Menstrual Disorders"],
+    desc: "Dr. Bashir Ahmad brings over 15 years of experience in gynaecology and maternal-fetal medicine. He is known for his compassionate approach and expertise in complex gynaecological conditions.",
+    days: "Tue, Thu, Sat",
+    timing: "11:00 AM – 3:00 PM",
+    img: null,
+    quote: "Compassionate care begins with listening to every patient.",
+    highlight: false,
+    useRealPhoto: false,
+    icon: "🏥",
+    accent: "#BE185D",
+  },
+  {
+    id: "dr-yasir-sultan",
+    name: "Dr. Yasir Sultan",
+    role: "Dermatologist",
+    qualifications: "MBBS, MD (Dermatology)",
+    experience: "9+ years",
+    specialties: ["Dermatology","Skin Disorders","Cosmetic Dermatology","Hair & Nail Disorders"],
+    desc: "Dr. Yasir Sultan is a board-certified dermatologist managing a wide spectrum of skin, hair and nail conditions. His expertise spans both medical dermatology and aesthetic skin treatments.",
+    days: "Mon, Wed, Sat",
+    timing: "10:00 AM – 3:00 PM",
+    img: null,
+    quote: "Healthy skin reflects a healthy life.",
+    highlight: false,
+    useRealPhoto: false,
+    icon: "✨",
+    accent: "#7C3AED",
+  },
+  {
+    id: "dr-altaf-hussain",
+    name: "Dr. Altaf Hussain",
+    role: "General Surgeon",
+    qualifications: "MBBS, MS (General Surgery), MD",
+    experience: "14+ years",
+    specialties: ["General Surgery","Laparoscopic Surgery","Wound Management","Hernia & Appendix"],
+    desc: "Dr. Altaf Hussain is a senior general surgeon with expertise in both open and laparoscopic surgical procedures. He handles a broad range of surgical conditions with precision and patient safety at the forefront.",
+    days: "Mon – Fri",
+    timing: "9:00 AM – 1:00 PM",
+    img: null,
+    quote: "Surgical precision saves lives — every cut matters.",
+    highlight: false,
+    useRealPhoto: false,
+    icon: "🔬",
+    accent: "#0D6B3A",
   },
 ];
 ---
 
-<Layout
-  title="Our Doctors | Mir Diagnostics"
-  description="Meet Dr. Javid Magray — Senior Radiologist at Mir Diagnostics Pampore. Expert USG and Doppler services available every Sunday."
->
-  <main id="main-content">
-    <section
-      class="pt-20 text-white"
-      style="background: linear-gradient(135deg, #0D6B3A 0%, #065f46 100%)"
-      aria-labelledby="doctors-hero-title"
-    >
-      <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
-        <span
-          class="text-sm tracking-widest uppercase mb-3 block opacity-70"
-          style="font-family: var(--font-mono)">— Medical Team</span
-        >
-        <h1
-          id="doctors-hero-title"
-          class="text-5xl md:text-6xl font-bold mt-1 mb-4"
-          style="font-family: var(--font-heading)"
-        >
-          Our Doctors
-        </h1>
-        <p class="text-xl max-w-2xl text-white/80 leading-relaxed">
-          Expert specialists delivering accurate diagnostics with compassion at
-          Mir Diagnostics, Pampore.
-        </p>
+<Layout title="Our Doctors | Mir Diagnostics" description="Meet our expert medical team at Mir Diagnostics Pampore — Radiologists, Sonologists, Gynaecologists, Dermatologist and General Surgeon.">
+
+  <!-- ══ HERO ══ -->
+  <section class="pt-20 text-white" style="background: linear-gradient(135deg, #0D6B3A 0%, #065f46 100%)">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
+      <span class="text-sm tracking-widest uppercase mb-3 block opacity-60" style="font-family: var(--font-mono)">— Medical Team</span>
+      <h1 class="text-5xl md:text-6xl font-bold mt-1 mb-4" style="font-family: var(--font-heading)">Our Doctors</h1>
+      <p class="text-xl max-w-2xl leading-relaxed" style="color: rgba(255,255,255,0.8)">
+        A team of 7 experienced specialists — Radiologists, Sonologists, Gynaecologists, Dermatologist and General Surgeon — serving Pampore and Kashmir.
+      </p>
+      <!-- Quick links -->
+      <div class="flex flex-wrap gap-2 mt-8">
+        {doctors.map((d) => (
+          <a href={`#${d.id}`} class="px-4 py-2 rounded-full text-xs font-bold border-2 border-white/25 text-white hover:bg-white/15 transition-all">
+            {d.name.split(" ").slice(0,3).join(" ")}
+          </a>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section-padding bg-white" aria-labelledby="team-heading">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <h2 id="team-heading" class="sr-only">Our Specialist Doctors</h2>
+  <!-- ══ FEATURED DOCTOR — Dr. Javid Magray ══ -->
+  <section id="dr-javid-magray" class="section-padding scroll-mt-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      {(() => {
+        const doc = doctors[0];
+        const waMsg = encodeURIComponent(`Hello, I want to book a USG appointment with ${doc.name} at Mir Diagnostics, Pampore.`);
+        return (
+          <article class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Photo -->
+            <div class="relative group w-full">
+              <div class="rounded-3xl overflow-hidden shadow-2xl border" style="border-color: var(--color-border)">
+                <img src={doc.img!} alt={`${doc.name} — ${doc.role} at Mir Diagnostics Pampore`}
+                  class="w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  style="min-height: 500px; aspect-ratio: 4/5" loading="eager" />
+              </div>
+              <!-- Experience chip -->
+              <div class="absolute top-5 right-5 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 border" style="border-color: var(--color-border)">
+                <BadgeCheck className="w-4 h-4 text-green-500"/>
+                <div>
+                  <div class="text-xs font-black" style="color: var(--color-lab-blue)">{doc.experience}</div>
+                  <div class="text-xs" style="color: var(--color-muted-foreground)">Experience</div>
+                </div>
+              </div>
+            </div>
 
-        {
-          doctors.map((doc) => {
-            const waMsg = encodeURIComponent(
-              `Hello, I want to book a USG appointment with ${doc.name} at Mir Diagnostics, Pampore.`,
-            );
-            return (
-              <article
-                class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24"
-                aria-labelledby={`doc-name-${doc.id}`}
-              >
-                <div class="relative group w-full">
-                  <div class="rounded-4xl overflow-hidden shadow-2xl border border-gray-100 transition-transform duration-500 group-hover:scale-[1.01]">
-                    <img
-                      src={doc.img}
-                      alt={`Portrait of ${doc.name}, ${doc.role}`}
-                      class="w-full h-full object-cover"
-                      style="min-height: 500px; aspect-ratio: 4/5;"
-                      loading="eager"
-                    />
-                  </div>
+            <!-- Info -->
+            <div class="flex flex-col pt-4">
+              <div class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6 self-start"
+                style="background: #fef9c3; color: #92400e; border: 1px solid #fde68a">
+                ⭐ Featured Specialist
+              </div>
 
-                  <div class="absolute top-6 right-6 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 border border-emerald-50">
-                    <Award
-                      className="w-4 h-4 text-emerald-600"
-                      aria-hidden="true"
-                    />
+              <h2 class="text-4xl md:text-5xl font-bold mb-2" style="font-family: var(--font-heading); color: var(--color-lab-blue)">{doc.name}</h2>
+              <p class="text-xl font-bold mb-1" style="color: var(--color-lab-teal)">{doc.role}</p>
+              <p class="text-xs tracking-widest uppercase mb-6" style="font-family: var(--font-mono); color: var(--color-muted-foreground)">{doc.qualifications}</p>
+
+              <blockquote class="italic text-xl leading-relaxed pl-5 border-l-4 mb-6" style="font-family: var(--font-heading); color: var(--color-lab-blue); border-color: var(--color-lab-teal)">
+                "{doc.quote}"
+              </blockquote>
+
+              <p class="leading-relaxed mb-6 text-base" style="color: var(--color-muted-foreground)">{doc.desc}</p>
+
+              <div class="flex flex-wrap gap-2 mb-6">
+                {doc.specialties.map((s) => (
+                  <span class="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl" style="background: rgba(22,163,74,0.08); color: var(--color-lab-teal); border: 1px solid rgba(22,163,74,0.15)">{s}</span>
+                ))}
+              </div>
+
+              <!-- Availability -->
+              <div class="rounded-2xl p-5 border mb-8" style="background: var(--color-lab-light); border-color: var(--color-border)">
+                <div class="grid grid-cols-2 gap-6">
+                  <div class="flex items-start gap-3">
+                    <div class="p-2 bg-white rounded-lg shadow-sm shrink-0">
+                      <CalendarDays className="w-4 h-4"/>
+                    </div>
                     <div>
-                      <div class="text-[9px] uppercase tracking-widest font-bold text-gray-400 leading-none">
-                        Experience
-                      </div>
-                      <div class="text-xs font-black text-emerald-900">
-                        {doc.experience}
-                      </div>
+                      <div class="text-xs font-bold uppercase tracking-wider mb-0.5" style="color: var(--color-lab-teal)">Visiting Days</div>
+                      <div class="font-black text-sm uppercase" style="color: var(--color-lab-blue)">{doc.days}</div>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="p-2 bg-white rounded-lg shadow-sm shrink-0">
+                     <Clock className="w-4 h-4"/>
+                    </div>
+                    <div>
+                      <div class="text-xs font-bold uppercase tracking-wider mb-0.5" style="color: var(--color-lab-teal)">Timing</div>
+                      <div class="font-black text-sm uppercase" style="color: var(--color-lab-blue)">{doc.timing}</div>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="flex flex-col pt-4">
-                  <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6 border border-amber-100 self-start">
-                    <Star
-                      className="w-3.5 h-3.5 fill-amber-500 text-amber-500"
-                      aria-hidden="true"
-                    />
-                    Featured Specialist
+              <div class="flex flex-wrap gap-3">
+                <a href={`https://wa.me/${WA}?text=${waMsg}`} target="_blank" rel="noopener noreferrer" class="btn-whatsapp flex-1 sm:flex-none px-8 py-3 justify-center">
+                  <WhatsAppIcon />
+                  Book Appointment
+                </a>
+                <a href="tel:+917006087182" class="btn-outline flex-1 sm:flex-none px-8 py-3 justify-center">
+                  <PhoneCall className="w-4 h-4"/> Call Centre
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })()}
+    </div>
+  </section>
+
+  <!-- ══ DIVIDER ══ -->
+  <div class="h-1.5" style="background: linear-gradient(90deg, var(--color-lab-blue), var(--color-lab-teal))"></div>
+
+  <!-- ══ OTHER DOCTORS GRID ══ -->
+  <section class="section-padding scroll-mt-20" style="background: linear-gradient(160deg, #f0fdf4, #ecfdf5)">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-14">
+        <span class="section-tag">Full Team</span>
+        <h2 class="section-title">Our Specialist Panel</h2>
+        <p class="section-subtitle mx-auto">Experienced consultants across radiology, gynaecology, dermatology and surgery — all available at Mir Diagnostics.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
+        {doctors.slice(1).map((doc) => {
+          const waMsg = encodeURIComponent(`Hello, I want to book an appointment with ${doc.name} at Mir Diagnostics, Pampore.`);
+          return (
+            <article id={doc.id} class="bg-white rounded-3xl overflow-hidden border shadow-sm card-hover scroll-mt-24 flex flex-col" style="border-color: var(--color-border)">
+              <!-- Coloured avatar header -->
+              <div class="flex items-center gap-5 p-6 pb-5" style={`background: linear-gradient(135deg, ${doc.accent}15, ${doc.accent}08)`}>
+                <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-sm shrink-0"
+                  style={`background: ${doc.accent}18; border: 2px solid ${doc.accent}30`}>
+                  {doc.icon}
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold leading-tight" style={`font-family: var(--font-heading); color: ${doc.accent}`}>{doc.name}</h3>
+                  <p class="text-sm font-semibold mt-0.5" style="color: var(--color-foreground)">{doc.role}</p>
+                  <p class="text-xs mt-0.5" style="font-family: var(--font-mono); color: var(--color-muted-foreground)">{doc.qualifications}</p>
+                </div>
+              </div>
+
+              <div class="px-6 pb-6 flex flex-col flex-1">
+                <!-- Quote -->
+                <blockquote class="italic text-sm pl-3 border-l-2 mb-4 leading-relaxed" style={`color: var(--color-muted-foreground); border-color: ${doc.accent}`}>
+                  "{doc.quote}"
+                </blockquote>
+
+                <!-- Description -->
+                <p class="text-sm leading-relaxed mb-4" style="color: var(--color-muted-foreground)">{doc.desc}</p>
+
+                <!-- Specialties -->
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  {doc.specialties.map((s) => (
+                    <span class="text-xs font-semibold px-2.5 py-1 rounded-lg"
+                      style={`background: ${doc.accent}12; color: ${doc.accent}; border: 1px solid ${doc.accent}22`}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+
+                <!-- Availability -->
+                <div class="rounded-xl p-4 mb-5 flex items-center gap-4" style="background: var(--color-lab-light); border: 1px solid var(--color-border)">
+                  <div class="text-center shrink-0">
+                    <div class="text-xs font-black uppercase tracking-wider mb-0.5" style="color: var(--color-muted-foreground)">Days</div>
+                    <div class="text-xs font-bold" style={`color: ${doc.accent}`}>{doc.days}</div>
                   </div>
-
-                  <header class="mb-6">
-                    <h3
-                      id={`doc-name-${doc.id}`}
-                      class="text-4xl md:text-5xl font-bold mb-2 text-emerald-950"
-                      style="font-family: var(--font-heading)"
-                    >
-                      {doc.name}
-                    </h3>
-                    <p class="text-xl font-bold text-emerald-600 mb-1">
-                      {doc.role}
-                    </p>
-                    <p class="text-xs font-mono tracking-widest text-gray-400 uppercase">
-                      {doc.qualifications}
-                    </p>
-                  </header>
-
-                  <div class="relative mb-8 group">
-                    <Quote
-                      className="absolute -top-4 -left-4 w-10 h-10 text-emerald-50 rotate-180"
-                      aria-hidden="true"
-                    />
-                    <blockquote
-                      class="italic text-xl text-emerald-900 leading-relaxed pl-6 border-l-4 border-emerald-500"
-                      style="font-family: var(--font-heading)"
-                    >
-                      "{doc.quote}"
-                    </blockquote>
+                  <div class="w-px h-8 bg-gray-200 shrink-0"></div>
+                  <div>
+                    <div class="text-xs font-black uppercase tracking-wider mb-0.5" style="color: var(--color-muted-foreground)">Timing</div>
+                    <div class="text-xs font-bold" style={`color: ${doc.accent}`}>{doc.timing}</div>
                   </div>
-
-                  <p class="leading-relaxed mb-8 text-gray-600 text-lg">
-                    {doc.desc}
-                  </p>
-
-                  <div
-                    class="flex flex-wrap gap-2 mb-8"
-                    aria-label="Specialties"
-                  >
-                    {doc.specialties.map((s) => (
-                      <span class="text-[11px] font-bold uppercase tracking-wider px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div class="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-100 mb-10">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div class="flex items-start gap-3">
-                        <div class="p-2 bg-white rounded-lg shadow-sm">
-                          <Calendar
-                            className="w-5 h-5 text-emerald-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div>
-                          <div class="text-[10px] uppercase font-bold text-emerald-500 tracking-wider">
-                            Visiting Days
-                          </div>
-                          <div class="text-sm font-black text-emerald-900 uppercase">
-                            {doc.days}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="flex items-start gap-3">
-                        <div class="p-2 bg-white rounded-lg shadow-sm">
-                          <Clock
-                            className="w-5 h-5 text-emerald-600"
-                            aria-hidden="true"
-                          />
-                        </div>
-                        <div>
-                          <div class="text-[10px] uppercase font-bold text-emerald-500 tracking-wider">
-                            Timing
-                          </div>
-                          <div class="text-sm font-black text-emerald-900 uppercase">
-                            {doc.timing}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex flex-wrap gap-4">
-                    <a
-                      href={`https://wa.me/${WA}?text=${waMsg}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-whatsapp px-8 py-2 shadow-lg shadow-emerald-100 flex items-center justify-center gap-3 text-base flex-1 sm:flex-none"
-                    >
-                      <MessageCircle className="w-5 h-5" /> Book Appointment
-                    </a>
-                    <a
-                      href="tel:+917006087182"
-                      class="btn-outline px-8 py-2 flex rounded-full items-center justify-center gap-3 text-base border-emerald-100 text-emerald-800 hover:bg-emerald-50 flex-1 sm:flex-none"
-                    >
-                      <Phone className="w-4 h-4" /> Call Center
-                    </a>
+                  <div class="ml-auto shrink-0">
+                    <div class="text-xs font-black uppercase tracking-wider mb-0.5 text-right" style="color: var(--color-muted-foreground)">Exp.</div>
+                    <div class="text-xs font-bold text-right" style={`color: ${doc.accent}`}>{doc.experience}</div>
                   </div>
                 </div>
-              </article>
-            );
-          })
-        }
-      </div>
-    </section>
-    <section
-      class="section-padding my-16 rounded-3xl p-10 text-white text-center shadow-2xl bg-linear-to-br from-emerald-800 to-emerald-600"
-      aria-labelledby="advance-diagnostic-imaging"
-    >
-      {/* Glassy Background Ornament */}
-      <!-- <div
-        class="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-150"
-        aria-hidden="true"
-      >
-      </div> -->
 
-      <div class="relative z-10">
-        <h3
-          id="usg-banner-title"
-          class="text-3xl md:text-4xl font-bold mb-4"
-          style="font-family: var(--font-heading)"
-        >
-          Advanced Diagnostic Imaging
-        </h3>
-        <p class="text-lg max-w-2xl mx-auto mb-10 text-emerald-50/80">
-          Our imaging department is equipped with high-resolution technology to
-          ensure early detection and accurate results for every patient.
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a
-            href="/services#usg"
-            class="bg-white text-emerald-900 font-bold px-10 py-3 rounded-full transition-all hover:bg-emerald-50 hover:shadow-xl focus:ring-4 focus:ring-white/30 flex items-center gap-2"
-          >
-            View Services <ArrowRight className="w-4 h-4" />
-          </a>
-          <a
-            href={`https://wa.me/${WA}?text=USG%20Inquiry`}
-            target="
-              _blank"
-            rel="noopener noreferrer"
-            class="bg-emerald-800/30 backdrop-blur-md border border-white/20 text-white font-bold px-10 py-3 rounded-full transition-all hover:bg-emerald-800/50 flex items-center gap-3"
-          >
-            <MessageCircle className="w-5 h-5" /> WhatsApp Booking
-          </a>
-        </div>
+                <!-- CTA buttons -->
+                <div class="flex gap-2 mt-auto">
+                  <a href={`https://wa.me/${WA}?text=${waMsg}`} target="_blank" rel="noopener noreferrer"
+                    class="btn-whatsapp flex-1 justify-center py-2.5 text-sm">
+                    <WhatsAppIcon />
+                    Book Now
+                  </a>
+                  <a href="tel:+917006087182" class="btn-outline py-2.5 px-4 text-sm"><PhoneCall className="w-4 h-4"/></a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- ══ BOTTOM CTA BANNER ══ -->
+  <section class="section-padding bg-emerald-900 text-white text-center mb-10">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: var(--font-heading)">Advanced Diagnostic Imaging</h3>
+      <p class="text-lg mb-10" style="color: rgba(255,255,255,0.8)">
+        Our imaging department is equipped with high-resolution technology to ensure early detection and accurate results for every patient.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20an%20appointment%20at%20Mir%20Diagnostics%20Pampore.`}
+          target="_blank" rel="noopener noreferrer"
+          class="btn-whatsapp">
+          <WhatsAppIcon />
+          WhatsApp Booking
+        </a>
+        <a href="/services#usg" class="btn-outline text-white border-white hover:bg-white/10">
+          View All Services <MoveRight className="w-4 h-4"/>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+
 </Layout>

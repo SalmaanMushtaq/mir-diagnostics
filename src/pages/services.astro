@@ -1,458 +1,487 @@
 ---
+import WhatsAppIcon from "@/components/whatsapImg";
 import Layout from "../layouts/Layout.astro";
-import {
-  Phone,
-  Check,
-  Info,
-  MessageCircle,
-  PhoneCall,
-  Activity,
-  Microscope,
-  ChevronDown,
-  Sparkles,
-} from "lucide-react";
+import { Info, CalendarDays, PhoneCall, CheckCircle2 } from "lucide-react";
 
 const WA = "917006087182";
 
 const packages = [
   {
-    name: "Genetic 1.4 Package",
-    params: 66,
-    discount: 38,
-    original: 4000,
-    price: 2500,
-    tests: [
-      "Complete Blood Count",
-      "Liver Function Test",
-      "Kidney Function Test",
-      "Thyroid Function Tests",
-      "Lipid Profile",
-      "Iron Deficiency Profile",
-      "HbA1c",
-      "Vit. D & Vit. B12",
-      "HIV 1&2 Quantitative",
-      "CRP Quantitative",
-      "Anti-HCV",
-      "RA Factor",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Genetic 1.3 Package",
-    params: 62,
-    discount: 40,
-    original: 3000,
-    price: 1800,
-    tests: [
-      "Complete Blood Count",
-      "Liver Function Test",
-      "Kidney Function Test",
-      "Thyroid Function Tests",
-      "Lipid Profile",
-      "Iron Deficiency Profile",
-      "HbA1c",
-      "Vit. D & Vit. B12",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Genetic 1.2 Package",
-    params: 60,
-    discount: 33,
-    original: 1800,
-    price: 1200,
-    tests: [
-      "Complete Blood Count",
-      "Liver Function Test",
-      "Kidney Function Test",
-      "Thyroid Function Tests",
-      "Lipid Profile",
-      "Iron Deficiency Profile",
-      "HbA1c",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Genetic 1.1 Package",
-    params: 59,
-    discount: 33,
+    name: "Body Profile 1.1",
+    params: 8,
+    discount: 50,
     original: 1200,
-    price: 800,
-    tests: [
-      "Complete Blood Count",
-      "Liver Function Test",
-      "Kidney Function Test",
-      "Thyroid Function Tests",
-      "Lipid Profile",
-      "Iron Deficiency Profile",
-    ],
+    price: 600,
+    tests: ["Thyroid Profile","CBC","Lipid Profile","KFT","LFT","Calcium","Electrolytes","HbA1c"],
     highlight: false,
+    img: "/pkg-profile11-600.jpg",
+  },
+  {
+    name: "Body Profile 1.2",
+    params: 10,
+    discount: 50,
+    original: 2000,
+    price: 999,
+    tests: ["Thyroid Profile","CBC","Lipid Profile","KFT","LFT","Calcium","Electrolytes","HbA1c","Iron Profile","Vitamin D"],
+    highlight: false,
+    img: "/pkg-profile12-999.jpg",
+  },
+  {
+    name: "Body Profile 1.3",
+    params: 11,
+    discount: 50,
+    original: 3000,
+    price: 1499,
+    tests: ["Thyroid Profile","CBC","Lipid Profile","KFT","LFT","Calcium","Electrolytes","HbA1c","Vitamin D","Vitamin B12","Testosterone"],
+    highlight: true,
+    img: "/pkg-profile12-1499.jpg",
+  },
+  {
+    name: "Body Profile 3",
+    params: 11,
+    discount: 57,
+    original: 3500,
+    price: 1499,
+    tests: ["Vitamin D3","Vitamin B12","Testosterone","Thyroid Profile","HbA1c","Iron Profile","CBC","ESR","Lipid Profile","LFT","Electrolytes"],
+    highlight: false,
+    img: "/body-profile-3.jpg",
+  },
+];
+
+const additionalServices = [
+  {
+    id: "fibroscan",
+    name: "FibroScan",
+    subtitle: "Liver Stiffness Assessment",
+    badge: "Non-Invasive",
+    badgeColor: "#7C3AED",
+    description: "FibroScan is a painless, non-invasive ultrasound-based test that measures liver stiffness and fatty change (CAP score). It is the gold standard for assessing liver fibrosis without a biopsy.",
+    features: ["Liver fibrosis staging (F0–F4)","Fatty liver (steatosis) grading","Results in under 10 minutes","No needles, no pain, no radiation","Ideal for Hepatitis B/C, NAFLD, cirrhosis monitoring"],
+    prep: "2-hour fast required. Avoid heavy exercise before the test.",
+    img: "/src/assets/services/fibroscan.jpg",  
+    waText: "Hello, I want to book a *FibroScan* at Mir Diagnostics, Pampore.",
+  },
+  {
+    id: "echo",
+    name: "Echocardiogram",
+    subtitle: "Cardiac Ultrasound (Echo)",
+    badge: "Cardiology",
+    badgeColor: "#DC2626",
+    description: "An echocardiogram uses ultrasound to produce real-time images of the heart — its chambers, valves, and pumping function. Essential for diagnosing heart failure, valve disease, and cardiomyopathy.",
+    features: ["2D & Doppler Echo","Assessment of heart function (EF)","Valve disease evaluation","Pericardial effusion detection","Congenital heart defect screening"],
+    prep: "No special preparation needed. Wear comfortable clothing.",
+    img: "/src/assets/services/echocardiogram.jpg",
+    waText: "Hello, I want to book an *Echocardiogram (Echo)* at Mir Diagnostics, Pampore.",
+  },
+  {
+    id: "ecg",
+    name: "ECG / EKG",
+    subtitle: "Electrocardiogram",
+    badge: "Cardiac",
+    badgeColor: "#EA580C",
+    description: "An ECG records the electrical activity of your heart. It is the first-line test for detecting arrhythmias, heart attacks, conduction defects, and is mandatory before surgeries.",
+    features: ["12-lead ECG","Arrhythmia detection","Myocardial infarction (MI) screening","Pre-operative cardiac clearance","Instant results — under 5 minutes"],
+    prep: "No preparation needed. Avoid oily skin creams before test.",
+    img: "/src/assets/services/electrocardiogram.jpg",
+    waText: "Hello, I want to book an *ECG* at Mir Diagnostics, Pampore.",
+  },
+  {
+    id: "xray",
+    name: "X-Ray",
+    subtitle: "Digital Radiography",
+    badge: "Radiology",
+    badgeColor: "#0369A1",
+    description: "Our digital X-ray facility provides high-resolution radiographic imaging for chest, bones, abdomen and more. Digital technology means lower radiation exposure, faster results, and better image quality.",
+    features: ["Chest X-Ray (PA & Lateral)","Bone & Joint X-Rays","Abdominal X-Ray","Spine & Lumbar X-Ray","Dental X-Ray","Low radiation digital system"],
+    prep: "Remove metal jewellery. Specific prep varies by body part.",
+    img: "/src/assets/services/x-ray.jpg",
+    waText: "Hello, I want to book an *X-Ray* at Mir Diagnostics, Pampore.",
+  },
+  {
+    id: "pharmacy",
+    name: "Pharmacy",
+    subtitle: "In-House Medical Store",
+    badge: "On-Site",
+    badgeColor: "#047857",
+    description: "Our in-house pharmacy stocks a wide range of prescription medicines, OTC drugs, supplements, and diagnostic consumables. Get your prescribed medications immediately after your consultation or test.",
+    features: ["Prescription & OTC medicines","Vitamins & supplements","Diabetic & cardiac drugs","Vaccines & injectables","Open during lab hours"],
+    prep: "Bring your prescription. We also dispense against lab reports.",
+    img: "/src/assets/services/pharmacy.jpg", 
+    waText: "Hello, I have a query about the *Pharmacy* at Mir Diagnostics, Pampore.",
   },
 ];
 ---
 
-<Layout
-  title="Services – USG & Health Packages | Mir Diagnostics"
-  description="Mir Diagnostics Services: Advanced USG imaging and comprehensive health packages in Pampore, Kashmir."
->
-  <main id="main-content">
-    <section
-      class="pt-20 text-white"
-      style="background: linear-gradient(135deg, var(--color-lab-green) 0%, #074d25 50%, var(--color-lab-teal) 100%)"
-      aria-labelledby="services-hero-title"
-    >
-      <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
-        <span
-          class="text-sm tracking-widest uppercase mb-3 block opacity-70"
-          style="font-family: var(--font-mono);"
-        >
-          — Diagnostics & Imaging
-        </span>
-        <h1
-          id="services-hero-title"
-          class="text-5xl md:text-6xl font-bold mt-1 mb-4"
-          style="font-family: var(--font-heading)"
-        >
-          Clinical Services
-        </h1>
-        <p class="text-xl max-w-2xl text-white/80 leading-relaxed">
-          Advanced USG imaging, comprehensive health packages, and full-spectrum
-          laboratory testing — all under one roof in Pampore.
-        </p>
-        <nav
-          class="flex flex-wrap gap-3 mt-8"
-          aria-label="Services quick links"
-        >
-          <a
-            href="#usg"
-            class="px-6 py-3 rounded-full text-sm font-semibold border-2 border-white/30 text-white hover:bg-white/10 transition-all flex items-center gap-2 focus:ring-2 focus:ring-white"
-          >
-            <ChevronDown className="w-4 h-4" /> USG Services
-          </a>
-          <a
-            href="#packages"
-            class="px-6 py-3 rounded-full text-sm font-semibold border-2 border-white/30 text-white hover:bg-white/10 transition-all flex items-center gap-2 focus:ring-2 focus:ring-white"
-          >
-            <ChevronDown className="w-4 h-4" /> Health Packages
-          </a>
-        </nav>
-      </div>
-    </section>
+<Layout title="Services – USG, FibroScan, ECG, X-Ray & Packages" description="Mir Diagnostics Pampore: USG, FibroScan, Echocardiogram, ECG, X-Ray, Pharmacy and Health Packages with WhatsApp booking.">
 
-    <section
-      id="usg"
-      class="section-padding scroll-mt-20"
-      aria-labelledby="usg-main-title"
-    >
-      <div class="container-tight">
-        <div class="text-center mb-14">
-          <span class="section-tag" aria-hidden="true">Radiology & Imaging</span
-          >
-          <h2 id="usg-main-title" class="section-title">
-            Ultrasound (USG) Services
-          </h2>
-          <p class="section-subtitle mx-auto">
-            High-definition ultrasound imaging performed by experienced
-            radiologists — safe, fast, and non-invasive.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <article>
-            <p class="leading-relaxed mb-4 text-gray-600">
-              Ultrasonography (USG) uses high-frequency sound waves to create
-              real-time images of internal organs. Unlike X-rays, it uses no
-              ionizing radiation — making it safe even during pregnancy.
-            </p>
-            <p class="leading-relaxed mb-8 text-gray-600">
-              Our USG department uses latest-generation machines including color
-              Doppler and 4D imaging. All scans are supervised by qualified
-              radiologists with same-day reports.
-            </p>
-            <a
-              href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20USG%20scan.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn-whatsapp inline-flex items-center gap-2"
-              aria-label="Book USG appointment on WhatsApp"
-            >
-              <MessageCircle className="w-5 h-5" /> Book USG on WhatsApp
-            </a>
-          </article>
-
-          <aside
-            class="rounded-2xl p-8 border border-emerald-100 bg-emerald-50/30"
-            aria-labelledby="usg-benefits-title"
-          >
-            <h3
-              id="usg-benefits-title"
-              class="text-xl font-bold mb-6 text-emerald-900"
-              style="font-family: var(--font-heading);"
-            >
-              Why USG at Mir Diagnostics?
-            </h3>
-            <ul class="space-y-4">
-              {
-                [
-                  "No radiation — completely safe",
-                  "Real-time organ visualization",
-                  "Same-day reports",
-                  "Safe for pregnancy & children",
-                  "Guides biopsies and procedures",
-                  "Color Doppler & 4D capability",
-                ].map((benefit) => (
-                  <li class="flex items-center gap-3 text-sm font-medium text-emerald-800">
-                    <Check
-                      className="w-5 h-5 text-emerald-600 shrink-0"
-                      aria-hidden="true"
-                    />
-                    {benefit}
-                  </li>
-                ))
-              }
-            </ul>
-          </aside>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {
-            [
-              {
-                title: "Abdominal USG",
-                badge: "Common",
-                prep: "Fast 4–6 hrs",
-                desc: "Liver, gallbladder, spleen, pancreas, kidneys. Detects gallstones, fatty liver, cysts, tumors.",
-              },
-              {
-                title: "Pelvic USG",
-                badge: "Gynecology",
-                prep: "Full bladder",
-                desc: "Uterus, ovaries, pelvic structures. Identifies fibroids, ovarian cysts, and pelvic pathology.",
-              },
-              {
-                title: "Obstetric USG",
-                badge: "Pregnancy",
-                prep: "Doctor's advice",
-                desc: "Fetal growth, placenta, amniotic fluid monitoring. NT scan, anomaly scan, growth scans.",
-              },
-              {
-                title: "Color Doppler",
-                badge: "Vascular",
-                prep: "No prep needed",
-                desc: "Blood flow in arteries and veins. Detects DVT, carotid stenosis, renal artery stenosis.",
-              },
-              {
-                title: "Thyroid USG",
-                badge: "Endocrine",
-                prep: "No prep needed",
-                desc: "Thyroid nodules, goiter, thyroiditis. Guides FNAC biopsies.",
-              },
-              {
-                title: "Musculoskeletal USG",
-                badge: "Orthopedic",
-                prep: "No prep needed",
-                desc: "Muscles, tendons, ligaments. Evaluates injuries, effusions, and soft tissue masses.",
-              },
-              {
-                title: "Breast USG",
-                badge: "Women's",
-                prep: "No prep needed",
-                desc: "Breast lumps and cysts. Complementary to mammography for dense breast tissue.",
-              },
-              {
-                title: "Scrotal USG",
-                badge: "Urology",
-                prep: "No prep needed",
-                desc: "Testes, epididymis. Detects varicocele, hydrocele, and torsion.",
-              },
-            ].map((s) => {
-              const waMsg = encodeURIComponent(
-                `Hello, I want to book a *${s.title}* at Mir Diagnostics.`,
-              );
-              return (
-                <section
-                  class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm transition-all hover:shadow-md"
-                  aria-labelledby={`usg-type-${s.title.toLowerCase().replace(/\s/g, "-")}`}
-                >
-                  <div class="flex items-start justify-between mb-3">
-                    <h3
-                      id={`usg-type-${s.title.toLowerCase().replace(/\s/g, "-")}`}
-                      class="font-bold text-lg text-emerald-900"
-                      style="font-family: var(--font-heading);"
-                    >
-                      {s.title}
-                    </h3>
-                    <span class="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700">
-                      {s.badge}
-                    </span>
-                  </div>
-                  <p class="text-sm text-gray-600 leading-relaxed mb-6">
-                    {s.desc}
-                  </p>
-                  <div class="flex items-center justify-between pt-4 border-t border-gray-50">
-                    <span class="text-xs font-bold text-amber-600 flex items-center gap-1.5">
-                      <Info className="w-4 h-4" aria-hidden="true" />
-                      PREP: {s.prep}
-                    </span>
-                    <a
-                      href={`https://wa.me/${WA}?text=${waMsg}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-xs font-bold text-emerald-600 flex items-center gap-1 hover:text-emerald-700 transition-colors"
-                    >
-                      Book Scan <ChevronDown className="w-3 h-3 -rotate-90" />
-                    </a>
-                  </div>
-                </section>
-              );
-            })
-          }
-        </div>
-      </div>
-    </section>
-
-    <div
-      class="h-1 bg-linear-to-r from-emerald-800 to-emerald-500"
-      role="presentation"
-      aria-hidden="true"
-    >
-    </div>
-
-    <section
-      id="packages"
-      class="section-padding scroll-mt-20"
-      style="background: #f8fafc"
-      aria-labelledby="packages-section-title"
-    >
-      <div class="max-w-5xl mx-auto px-4">
-        <div class="text-center mb-12">
-          <span class="section-tag" aria-hidden="true">Value Panels</span>
-          <h2 id="packages-section-title" class="section-title">
-            Genetic Health Packages
-          </h2>
-          <p class="section-subtitle mx-auto">
-            Precision testing with bundled savings.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-6">
-          {
-            packages.map((pkg) => {
-              const waMsg = encodeURIComponent(
-                `Hello, I want to book the *${pkg.name}* (₹${pkg.price}).`,
-              );
-              return (
-                <section
-                  class={`group relative bg-white rounded-3xl overflow-hidden border transition-all duration-300 hover:shadow-xl hover:border-emerald-200 ${
-                    pkg.highlight
-                      ? "ring-2 ring-emerald-500 border-transparent shadow-lg"
-                      : "border-gray-300 "
-                  }`}
-                  aria-labelledby={`pkg-name-${pkg.name.toLowerCase().replace(/\s/g, "-")}`}
-                >
-                  {/* Desktop View: Horizontal Flex | Mobile View: Vertical Stack */}
-                  <div class="flex flex-col md:flex-row">
-                    <div class="p-8 md:w-1/3 bg-emerald-50/30 border-b md:border-b-0 md:border-r border-emerald-50">
-                      {pkg.highlight && (
-                        <span class="inline-flex items-center gap-1 text-[10px] font-black text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full mb-3">
-                          <Sparkles className="w-3 h-3" /> BEST VALUE
-                        </span>
-                      )}
-                      <h3
-                        id={`pkg-name-${pkg.name.toLowerCase().replace(/\s/g, "-")}`}
-                        class="text-2xl font-black text-emerald-950 mb-2"
-                        style="font-family: var(--font-heading);"
-                      >
-                        {pkg.name}
-                      </h3>
-                      <div class="flex items-center gap-2 text-emerald-700 font-bold text-sm">
-                        <Activity className="w-4 h-4" />
-                        {pkg.params} Parameters included
-                      </div>
-                      <div class="mt-4 text-emerald-600/60 text-xs font-medium uppercase tracking-tighter">
-                        Full Body Screening Panel
-                      </div>
-                    </div>
-
-                    <div class="p-8 flex-1">
-                      <h4 class="sr-only">Included Tests</h4>
-                      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
-                        {pkg.tests.map((t) => (
-                          <li class="flex items-center gap-2 text-[13px] text-gray-600 group-hover:text-emerald-900 transition-colors">
-                            <Check
-                              className="w-4 h-4 text-emerald-500 shrink-0"
-                              strokeWidth={3}
-                            />
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div class="p-8 md:w-64 bg-emerald-900 text-white flex flex-col justify-center items-center text-center">
-                      <div class="mb-4">
-                        <del class="block text-emerald-400/60 text-sm font-bold">
-                          ₹{pkg.original.toLocaleString()}
-                        </del>
-                        <div
-                          class="text-4xl font-black"
-                          style="font-family: var(--font-heading);"
-                        >
-                          ₹{pkg.price.toLocaleString()}
-                        </div>
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-emerald-400">
-                          -{pkg.discount}% OFF
-                        </span>
-                      </div>
-
-                      <a
-                        href={`https://wa.me/${WA}?text=${waMsg}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="w-full bg-white text-emerald-900 font-bold py-3 rounded-2xl hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2"
-                      >
-                        <MessageCircle className="w-4 h-4" />
-                        Book Now
-                      </a>
-                    </div>
-                  </div>
-                </section>
-              );
-            })
-          }
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="container-tight my-16 rounded-3xl p-10 text-white text-center shadow-2xl bg-linear-to-br from-emerald-800 to-emerald-600"
-      aria-labelledby="custom-pkg-title"
-    >
-      <h3
-        id="custom-pkg-title"
-        class="text-3xl font-bold mb-4"
-        style="font-family: var(--font-heading);"
-      >
-        Need a Custom Package?
-      </h3>
-      <p class="mb-8 text-emerald-100 text-lg max-w-2xl mx-auto">
-        Talk to our diagnostic experts and we'll create a personalised health
-        panel tailored to your specific clinical needs.
+  <!-- ══ HERO ══ -->
+  <section class="pt-20 text-white" style="background: linear-gradient(135deg, #0D6B3A 0%, #074d25 50%, #16A34A 100%)">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
+      <span class="text-sm tracking-widest uppercase mb-3 block opacity-60" style="font-family: var(--font-mono)">— Diagnostics & Imaging</span>
+      <h1 class="text-5xl md:text-6xl font-bold mt-1 mb-4" style="font-family: var(--font-heading)">Clinical Services</h1>
+      <p class="text-xl max-w-2xl leading-relaxed" style="color: rgba(255,255,255,0.8)">
+        Advanced USG imaging · FibroScan · Echo · ECG · X-Ray · In-house Pharmacy · Health Packages — all at Mir Diagnostics, Pampore.
       </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a
-          href={`https://wa.me/${WA}?text=Custom%20Package%20Inquiry`}
-          class="btn-whatsapp px-10 py-4 text-base shadow-lg"
-        >
-          <MessageCircle className="w-5 h-5" /> WhatsApp Us
-        </a>
-        <a
-          href="tel:+917006087182"
-          class="border-2 border-white/30 hover:bg-white/10 px-10 py-4 rounded-full font-bold transition-all flex items-center gap-2 focus:ring-2 focus:ring-white"
-        >
-          <PhoneCall className="w-5 h-5 text-emerald-400" /> Call Now
-        </a>
+      <!-- Quick jump nav -->
+      <div class="flex flex-wrap gap-2 mt-8">
+        {["#usg","#fibroscan","#echo","#ecg","#xray","#pharmacy","#packages"].map((href) => {
+          const labels = {
+            "#usg":"USG","#fibroscan":"FibroScan","#echo":"Echo","#ecg":"ECG",
+            "#xray":"X-Ray","#pharmacy":"Pharmacy","#packages":"Packages"
+          };
+          return (
+            <a href={href} class="px-4 py-2 rounded-full text-xs font-bold border-2 border-white/25 text-white hover:bg-white/15 transition-all">
+              {labels[href as keyof typeof labels]}
+            </a>
+          );
+        })}
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- ══ USG SECTION ══ -->
+  <section id="usg" class="section-padding scroll-mt-20">
+    <div class="container-tight">
+      <div class="text-center mb-14">
+        <span class="section-tag">Radiology & Imaging</span>
+        <h2 class="section-title">Ultrasound (USG) Services</h2>
+        <p class="section-subtitle mx-auto">High-definition ultrasound by experienced radiologists — safe, fast, non-invasive.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-14">
+        <div>
+          <p class="leading-relaxed mb-4" style="color: var(--color-muted-foreground)">
+            Ultrasonography (USG) uses high-frequency sound waves to create real-time images of internal organs. No ionizing radiation — safe even during pregnancy.
+          </p>
+          <p class="leading-relaxed mb-6" style="color: var(--color-muted-foreground)">
+            Our USG department features latest-generation machines with color Doppler and 4D imaging. All scans supervised by qualified radiologists. Same-day reports.
+          </p>
+          <a href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20USG%20scan%20at%20Mir%20Diagnostics%2C%20Pampore.`}
+            target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <WhatsAppIcon />
+            Book USG on WhatsApp
+          </a>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-xl">
+          <img src="/usg-facilities.jpg" alt="USG facilities at Mir Diagnostics Pampore" class="w-full object-cover" style="max-height:360px" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- USG Types grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { title:"Abdominal USG",       badge:"Common",     prep:"Fast 4–6 hrs",    desc:"Liver, gallbladder, spleen, pancreas, kidneys. Detects gallstones, fatty liver, cysts, tumors." },
+          { title:"Pelvic USG",          badge:"Gynecology", prep:"Full bladder",    desc:"Uterus, ovaries, pelvic structures. Identifies fibroids, ovarian cysts, and pelvic pathology." },
+          { title:"Obstetric USG",       badge:"Pregnancy",  prep:"Doctor's advice", desc:"Fetal growth, placenta, amniotic fluid. NT scan, anomaly scan, dating scan." },
+          { title:"Color Doppler",       badge:"Vascular",   prep:"No prep needed",  desc:"Blood flow in arteries and veins. Detects DVT, carotid stenosis, renal artery stenosis." },
+          { title:"3D/4D Ultrasound",    badge:"Advanced",   prep:"Doctor's advice", desc:"Detailed three and four-dimensional imaging for obstetric and anatomical evaluation." },
+          { title:"NT / NB Scan",        badge:"Pregnancy",  prep:"Doctor's advice", desc:"Nuchal translucency scan for Down syndrome risk assessment at 11–14 weeks." },
+          { title:"Level-II Scan",       badge:"Fetal",      prep:"Doctor's advice", desc:"Detailed fetal anomaly scan at 18–22 weeks. Evaluates all organ systems." },
+          { title:"Thyroid USG",         badge:"Endocrine",  prep:"No prep needed",  desc:"Thyroid nodules, goiter, thyroiditis. Guides FNAC biopsies." },
+          { title:"Breast USG",          badge:"Women's",    prep:"No prep needed",  desc:"Breast lumps and cysts. Complementary to mammography for dense breast tissue." },
+          { title:"Musculoskeletal USG", badge:"Orthopedic", prep:"No prep needed",  desc:"Muscles, tendons, ligaments. Evaluates injuries, effusions, and soft tissue masses." },
+          { title:"Scrotal USG",         badge:"Urology",    prep:"No prep needed",  desc:"Testes, epididymis. Detects varicocele, hydrocele, and torsion." },
+          { title:"USG Neck",            badge:"Neck",       prep:"No prep needed",  desc:"Neck masses, lymph nodes, salivary glands, and soft tissue evaluation." },
+          { title:"USG Chest",           badge:"Thoracic",   prep:"No prep needed",  desc:"Pleural effusion, chest wall masses, and guided thoracentesis." },
+          { title:"Dating & Cardiac Scan",badge:"Pregnancy", prep:"Doctor's advice", desc:"Early pregnancy dating and fetal cardiac assessment." },
+        ].map((s) => {
+          const waMsg = encodeURIComponent(`Hello, I want to book a *${s.title}* at Mir Diagnostics, Pampore.`);
+          const badgeColors = {
+            Common:"#16A34A",Gynecology:"#DB2777",Pregnancy:"#9333EA",Vascular:"#2563EB",
+            Advanced:"#7C3AED",Fetal:"#EA580C",Endocrine:"#0891B2","Women's":"#EC4899",
+            Orthopedic:"#D97706",Urology:"#0369A1",Neck:"#059669",Thoracic:"#4F46E5","Dating & Cardiac Scan":"#B91C1C"
+          };
+          const bc = badgeColors[s.badge as keyof typeof badgeColors] ?? "#16A34A";
+          return (
+            <div class="bg-white rounded-xl p-5 border card-hover" style="border-color: var(--color-border)">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-bold text-base" style="font-family: var(--font-heading); color: var(--color-lab-blue)">{s.title}</h3>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full shrink-0 ml-3 text-white" style={`background-color: ${bc}`}>{s.badge}</span>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--color-muted-foreground)">{s.desc}</p>
+              <div class="flex items-center justify-between pt-3" style="border-top: 1px solid var(--color-border)">
+                <span class="text-xs font-bold flex items-center gap-1" style="color: var(--color-lab-gold)">
+                  <Info className="w-3.5 h-3.5 shrink-0"/> {s.prep}
+                </span>
+                <a href={`https://wa.me/${WA}?text=${waMsg}`} target="_blank" rel="noopener noreferrer" class="btn-whatsapp py-1.5 px-3 text-xs">
+                 <WhatsAppIcon className="w-3.5 h-3.5 shrink-0"/>
+                  Book Now
+                </a>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DIVIDER ══ -->
+  <div class="h-1.5" style="background: linear-gradient(90deg, var(--color-lab-blue), var(--color-lab-teal))"></div>
+
+  <!-- ══ ADDITIONAL SERVICES ══ -->
+  {additionalServices.map((svc, idx) => {
+    const waMsg = encodeURIComponent(svc.waText);
+    const isEven = idx % 2 === 0;
+    return (
+      <section id={svc.id} class="section-padding scroll-mt-20" style={isEven ? "background-color: var(--color-lab-light)" : "background: white"}>
+        <div class="container-tight">
+          <div class={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${!isEven ? "lg:flex-row-reverse" : ""}`}>
+
+            <!-- Image side — alternates left/right -->
+            <div class={`rounded-2xl overflow-hidden shadow-2xl ${!isEven ? "lg:order-2" : ""}`}>
+              <img
+                src={svc.img}
+                alt={`${svc.name} at Mir Diagnostics Pampore`}
+                class="w-full object-cover"
+                style="height: 420px"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Content side -->
+            <div class={!isEven ? "lg:order-1" : ""}>
+              <!-- Badge -->
+              <span class="inline-block text-white text-xs font-black px-3 py-1.5 rounded-full mb-4 uppercase tracking-wider"
+                style={`background-color: ${svc.badgeColor}`}>
+                {svc.badge}
+              </span>
+
+              <h2 class="section-title mb-1">{svc.name}</h2>
+              <p class="text-lg font-semibold mb-4" style="color: var(--color-lab-teal)">{svc.subtitle}</p>
+
+              <p class="leading-relaxed mb-5 text-base" style="color: var(--color-muted-foreground)">{svc.description}</p>
+
+              <!-- Feature list -->
+              <ul class="space-y-2.5 mb-6">
+                {svc.features.map((f) => (
+                  <li class="flex items-start gap-3 text-sm font-medium" style="color: var(--color-foreground)">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 text-lab-teal"/>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              <!-- Prep note -->
+              <div class="flex items-start gap-3 rounded-xl p-4 mb-6" style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25)">
+                <span class="text-xl shrink-0"><Info className="w-5 h-5 shrink-0 text-lab-gold"/></span>
+                <div>
+                  <p class="text-xs font-black uppercase tracking-wider mb-0.5" style="color: var(--color-lab-gold)">Preparation</p>
+                  <p class="text-sm" style="color: var(--color-foreground)">{svc.prep}</p>
+                </div>
+              </div>
+
+              <!-- CTA buttons -->
+              <div class="flex flex-wrap gap-3">
+                <a href={`https://wa.me/${WA}?text=${waMsg}`} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                  <WhatsAppIcon className="w-3.5 h-3.5 shrink-0"/>
+                  Book on WhatsApp
+                </a>
+                <a href="tel:+917006087182" class="btn-outline flex items-center gap-2">
+                  <PhoneCall className="w-3.5 h-3.5 shrink-0"/> 7006087182
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- ══ EXPERT DOCTORS ══ -->
+  <section class="section-padding scroll-mt-20" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7)">
+    <div class="container-tight">
+      <div class="text-center mb-14">
+        <span class="section-tag">Our Medical Team</span>
+        <h2 class="section-title">Experienced Doctors</h2>
+        <p class="section-subtitle mx-auto">Board-certified specialists bringing decades of expertise to every diagnosis at Mir Diagnostics, Pampore.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <!-- Dr. Javid Magray — real photo -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md border card-hover" style="border-color: var(--color-border)">
+          <div class="relative">
+            <img src="/dr-javid-magray.jpg" alt="Dr. Javid Magray — Senior Radiologist, Mir Diagnostics Pampore"
+              class="w-full object-cover object-top" style="height: 320px" loading="lazy" />
+            <div class="absolute bottom-0 left-0 right-0 px-6 py-3 text-white"
+              style="background: linear-gradient(to top, rgba(13,107,58,0.95), transparent)">
+              <p class="font-black text-xl" style="font-family: var(--font-heading)">Dr. Javid Magray</p>
+              <p class="text-sm font-medium opacity-90">Senior Radiologist</p>
+            </div>
+            <div class="absolute top-4 right-4 bg-white text-xs font-black px-3 py-1.5 rounded-full shadow" style="color: var(--color-lab-blue)">
+              ⭐ Featured
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-4">
+              {["USG & Doppler","3D/4D Imaging","Obstetric Scan","Echo","FibroScan"].map((s) => (
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: rgba(22,163,74,0.1); color: var(--color-lab-teal)">{s}</span>
+              ))}
+            </div>
+            <blockquote class="italic text-base mb-4 pl-3 border-l-4" style="font-family: var(--font-heading); color: var(--color-lab-blue); border-color: var(--color-lab-teal)">
+              "Precision in every image, care in every diagnosis."
+            </blockquote>
+            <div class="flex items-center gap-3 p-3 rounded-xl mb-4" style="background: var(--color-lab-light)">
+              <span class="text-2xl"><CalendarDays className="w-5 h-5 shrink-0 text-lab-gold"/></span>
+              <div>
+                <p class="font-bold text-sm" style="color: var(--color-lab-blue)">Available Every Sunday</p>
+                <p class="text-xs" style="color: var(--color-muted-foreground)">All kinds of ultrasounds · Khrew Bus Stop, Namblabal, Pampore</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <a href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20book%20a%20USG%20with%20Dr.%20Javid%20Magray%20on%20Sunday.`}
+                target="_blank" rel="noopener noreferrer" class="btn-whatsapp flex-1 justify-center">
+                <WhatsAppIcon className="w-3.5 h-3.5 shrink-0"/>
+                Book Appointment
+              </a>
+              <a href="tel:+917006087182" class="btn-outline px-4"><PhoneCall className="w-5 h-5 shrink-0 text-lab-gold"/></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lab team card — real lab photo -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md border card-hover" style="border-color: var(--color-border)">
+          <div class="relative">
+            <img src="/lab-reception.jpg" alt="Mir Diagnostic Centre — Lab team and reception, Pampore"
+              class="w-full object-cover" style="height: 320px" loading="lazy" />
+            <div class="absolute bottom-0 left-0 right-0 px-6 py-3 text-white"
+              style="background: linear-gradient(to top, rgba(13,107,58,0.95), transparent)">
+              <p class="font-black text-xl" style="font-family: var(--font-heading)">Lab Pathologists & Scientists</p>
+              <p class="text-sm font-medium opacity-90">Qualified diagnostic team · Mon–Sat</p>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex flex-wrap gap-2 mb-4">
+              {["Haematology","Biochemistry","Microbiology","Serology","Molecular PCR"].map((s) => (
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full" style="background: rgba(22,163,74,0.1); color: var(--color-lab-teal)">{s}</span>
+              ))}
+            </div>
+            <p class="text-sm leading-relaxed mb-5" style="color: var(--color-muted-foreground)">
+              Our in-house pathologists and laboratory scientists oversee 500+ tests daily — from routine CBC and LFT panels to advanced PCR-based molecular diagnostics. Every result is verified before release.
+            </p>
+            <div class="grid grid-cols-3 gap-3 mb-5">
+              {[{n:"500+",l:"Tests Available"},{n:"Same Day",l:"Most Reports"},{n:"NABL",l:"Accredited"}].map((s) => (
+                <div class="text-center p-3 rounded-xl" style="background: var(--color-lab-light)">
+                  <div class="font-black text-sm" style="color: var(--color-lab-blue)">{s.n}</div>
+                  <div class="text-xs mt-0.5" style="color: var(--color-muted-foreground)">{s.l}</div>
+                </div>
+              ))}
+            </div>
+            <div class="flex gap-3">
+              <a href={`https://wa.me/${WA}?text=Hello%2C%20I%20want%20to%20enquire%20about%20lab%20tests%20at%20Mir%20Diagnostics%20Pampore.`}
+                target="_blank" rel="noopener noreferrer" class="btn-whatsapp flex-1 justify-center">
+                <WhatsAppIcon className="w-3.5 h-3.5 shrink-0"/> Enquire on WhatsApp
+              </a>
+              <a href="tel:+919055998899" class="btn-outline px-4"><PhoneCall className="w-5 h-5 shrink-0 text-lab-gold"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credentials bar -->
+      <div class="rounded-2xl p-6 text-black/90" style="background: linear-gradient(135deg, var(--color-lab-blue), var(--color-lab-teal))">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          {[
+            {icon:"🏆", title:"NABL Accredited", sub:"ISO 15189 certified"},
+            {icon:"👨‍⚕️", title:"Expert Doctors", sub:"Board certified specialists"},
+            {icon:"📡", title:"USG Every Sunday", sub:"Dr. Javid Magray"},
+            {icon:"🏠", title:"Home Collection", sub:"Pampore & nearby areas"},
+          ].map((c) => (
+            <div>
+              <div class="text-3xl mb-1">{c.icon}</div>
+              <div class="font-bold text-sm">{c.title}</div>
+              <div class="text-xs mt-0.5">{c.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HEALTH PACKAGES ══ -->
+  <section id="packages" class="section-padding scroll-mt-20" style="background: #f8fafc">
+    <div class="container-tight">
+      <div class="text-center mb-12">
+        <span class="section-tag">Special Offers</span>
+        <h2 class="section-title">Health Packages</h2>
+        <p class="section-subtitle mx-auto">Comprehensive wellness panels with real savings — book instantly via WhatsApp.</p>
+      </div>
+
+      <div class="flex flex-col gap-6">
+        {packages.map((pkg) => {
+          const waMsg = encodeURIComponent(`Hello, I want to book *${pkg.name}* (₹${pkg.price}) at Mir Diagnostics, Pampore (Khrew Bus Stop, Namblabal).`);
+          return (
+            <div class={`relative bg-white rounded-3xl overflow-hidden border transition-all duration-300 hover:shadow-xl ${pkg.highlight ? "shadow-lg" : "border-gray-200"}`}
+              style={pkg.highlight ? "border: 2px solid var(--color-lab-teal); box-shadow: 0 8px 32px rgba(22,163,74,0.18)" : ""}>
+
+              {pkg.highlight && (
+                <div class="absolute top-4 right-4 z-10 text-white text-xs font-black px-3 py-1.5 rounded-full" style="background-color: var(--color-lab-gold)">
+                  ⭐ Most Popular
+                </div>
+              )}
+
+              <div class="flex flex-col md:flex-row">
+                <!-- Package image -->
+                <div class="md:w-64 shrink-0 overflow-hidden" style="min-height: 180px">
+                  <img src={pkg.img} alt={`${pkg.name} — Mir Diagnostics Pampore`}
+                    class="w-full h-full object-fill object-top" loading="lazy" />
+                </div>
+
+                <!-- Tests list -->
+                <div class="p-6 flex-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <h3 class="text-2xl font-black" style="font-family: var(--font-heading); color: var(--color-lab-blue)">{pkg.name}</h3>
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-full text-white shrink-0" style="background-color: var(--color-lab-teal)">{pkg.params} Tests</span>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+                    {pkg.tests.map((t) => (
+                      <div class="flex items-center gap-2 text-sm" style="color: var(--color-foreground)">
+                        <CheckCircle2 className="w-4 h-4 shrink-0 text-lab-teal"/>
+                        {t}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Price + book -->
+                <div class="p-6 md:w-56 flex flex-col justify-center items-center text-center shrink-0 bg-[#0b2618]">
+                  <div class="text-sm line-through mb-1 text-white">₹{pkg.original.toLocaleString()}</div>
+                  <div class="text-4xl font-black text-white mb-1" style="font-family: var(--font-heading)">₹{pkg.price.toLocaleString()}</div>
+                  <div class="text-xs font-black mb-5 px-3 py-1 rounded-full" style="background: var(--color-lab-gold); color: white">-{pkg.discount}% OFF</div>
+                  <a href={`https://wa.me/${WA}?text=${waMsg}`} target="_blank" rel="noopener noreferrer"
+                    class="btn-whatsapp py-1.5 px-3 text-xs">
+                    <WhatsAppIcon className="w-3.5 h-3.5 shrink-0"/>
+                    Book Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+    </div>
+  </section>
+  <!-- Custom package CTA -->
+  <section class="mb-10 p-10 bg-emerald-900 text-white text-center">
+    <h3 class="text-3xl font-bold mb-3" style="font-family: var(--font-heading)">Need a Custom Package?</h3>
+    <p class="mb-8 text-lg max-w-xl mx-auto" style="color: rgba(255,255,255,0.8)">
+      Talk to our team and we'll create a personalised health panel tailored to your specific needs and budget.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+       <a
+        href={`https://wa.me/${WA}?text=Hello`}
+        class="btn-whatsapp w-50.5"
+      >
+        <WhatsAppIcon />
+        Book on WhatsApp
+      </a>
+      <a
+        href="tel:+917006087182"
+        class="btn-outline text-white border-white hover:bg-white/10 w-50.5"
+      >
+        <PhoneCall className="w-4 h-4" /> Call Now
+      </a>
+    </div>
+  </section>
+
 </Layout>
