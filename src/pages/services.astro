@@ -201,7 +201,7 @@ const additionalServices = [
   <section
     class="pt-20 text-white bg-linear-to-br from-[#0D6B3A] via-[#074d25] to-[#16A34A]"
   >
-    <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
+    <div class="max-w-7xl mx-auto section-padding py-20">
       <span
         class="text-sm tracking-widest uppercase mb-3 block opacity-60 font-mono"
         >— Diagnostics & Imaging</span
@@ -707,7 +707,7 @@ const additionalServices = [
             );
             return (
               <div
-                class={`relative bg-white rounded-3xl overflow-hidden border transition-all duration-300 hover:shadow-xl ${pkg.highlight ? "border-emerald-500 shadow-emerald-900/10 shadow-lg" : "border-slate-200"}`}
+                class={`relative bg-white rounded-md md:rounded-xl overflow-hidden border transition-all duration-300 hover:shadow-xl ${pkg.highlight ? "border-emerald-500 shadow-emerald-900/10 shadow-lg" : "border-slate-200"}`}
               >
                 {pkg.highlight && (
                   <div class="absolute top-4 right-4 z-10 text-white text-[10px] font-black px-3 py-1.5 rounded-full bg-amber-500 uppercase tracking-widest">

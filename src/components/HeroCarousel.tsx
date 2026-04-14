@@ -151,7 +151,7 @@ export default function HeroCarousel() {
 
               {/* Content */}
               <div className="relative z-10 h-full flex items-center">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 w-full">
+                <div className="max-w-7xl mx-auto section-padding w-full">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div
                       className="text-white"

@@ -22,7 +22,7 @@ export default function Footer() {
       }}
     >
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-16">
+      <div className="max-w-7xl mx-auto section-padding py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Section */}
           <section className="lg:col-span-2" aria-labelledby="footer-brand">

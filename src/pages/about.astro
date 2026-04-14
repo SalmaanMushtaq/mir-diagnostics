@@ -105,13 +105,13 @@ const testCategories = [
   title="About Us | Mir Diagnostics"
   description="Learn about Mir Diagnostics – our mission, values, and state-of-the-art laboratory services in Pampore, Kashmir."
 >
-  <main id="main-content">
+  <section id="main-content">
     <!-- About Hero Title Section -->
     <section
       class="pt-20 bg-linear-to-br from-[#0D6B3A] to-[#16A34A] text-white"
       aria-labelledby="about-hero-title"
     >
-      <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
+      <div class="max-w-7xl mx-auto section-padding py-20">
         <span
           class="font-mono text-white/60 text-sm tracking-widest uppercase block mb-3"
           >— Our Story</span
@@ -133,8 +133,8 @@ const testCategories = [
       </div>
     </section>
     <!-- Trust Heading Section -->
-    <section class="section-padding bg-white" aria-labelledby="trust-heading">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <section class="bg-white" aria-labelledby="trust-heading">
+      <div class="section-padding max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span class="section-tag" aria-hidden="true">Who We Are</span>
@@ -201,53 +201,48 @@ const testCategories = [
     </section>
 
     <section
-      class="section-padding bg-emerald-50/30"
+      class="section-padding max-w-7xl mx-auto bg-emerald-50/30"
       aria-labelledby="services-heading"
     >
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-14">
-          <span class="section-tag" aria-hidden="true">Comprehensive Care</span>
-          <h2 id="services-heading" class="section-title">
-            Our Laboratory Specialties
-          </h2>
-          <p class="section-subtitle mx-auto">
-            We offer over 100+ diagnostic tests across all major medical
-            specialties using automated technologies.
-          </p>
-        </div>
+      <div class="text-center mb-14">
+        <span class="section-tag" aria-hidden="true">Comprehensive Care</span>
+        <h2 id="services-heading" class="section-title">
+          Our Laboratory Specialties
+        </h2>
+        <p class="section-subtitle mx-auto">
+          We offer over 100+ diagnostic tests across all major medical
+          specialties using automated technologies.
+        </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {
-            testCategories.map((c) => (
-              <section
-                class="bg-white rounded-2xl border border-emerald-100 p-7 shadow-sm hover:shadow-md transition-shadow group"
-                aria-labelledby={`cat-${c.cat.replace(/\s+/g, "-").toLowerCase()}`}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          testCategories.map((c) => (
+            <section
+              class="bg-white rounded-2xl border border-emerald-100 p-7 shadow-sm hover:shadow-md transition-shadow group"
+              aria-labelledby={`cat-${c.cat.replace(/\s+/g, "-").toLowerCase()}`}
+            >
+              <h3
+                id={`cat-${c.cat.replace(/\s+/g, "-").toLowerCase()}`}
+                class="font-heading text-xl font-bold text-emerald-900 mb-5 pb-3 border-b border-emerald-50 flex items-center justify-between"
               >
-                <h3
-                  id={`cat-${c.cat.replace(/\s+/g, "-").toLowerCase()}`}
-                  class="font-heading text-xl font-bold text-emerald-900 mb-5 pb-3 border-b border-emerald-50 flex items-center justify-between"
-                >
-                  {c.cat}
-                  <ChevronRight className="w-4 h-4 text-emerald-300 group-hover:text-emerald-500 transition-colors" />
-                </h3>
-                <ul
-                  class="space-y-3"
-                  aria-label={`Tests available in ${c.cat}`}
-                >
-                  {c.tests.map((t) => (
-                    <li class="flex items-start gap-3 text-sm text-gray-600">
-                      <span
-                        class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"
-                        aria-hidden="true"
-                      />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))
-          }
-        </div>
+                {c.cat}
+                <ChevronRight className="w-4 h-4 text-emerald-300 group-hover:text-emerald-500 transition-colors" />
+              </h3>
+              <ul class="space-y-3" aria-label={`Tests available in ${c.cat}`}>
+                {c.tests.map((t) => (
+                  <li class="flex items-start gap-3 text-sm text-gray-600">
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5"
+                      aria-hidden="true"
+                    />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
       </div>
     </section>
 
@@ -284,5 +279,5 @@ const testCategories = [
         </div>
       </div>
     </section> -->
-  </main>
+  </section>
 </Layout>
