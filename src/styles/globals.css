@@ -197,15 +197,16 @@
     gap: 0.5rem;
     border: 2px solid var(--color-lab-green);
     color: var(--color-lab-green);
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    padding: 0.56rem 1.5rem;
+    border-radius: 8px;
     font-family: var(--font-body);
     font-weight: 500;
     transition: all 0.3s;
     text-decoration: none;
+    justify-content: center;
   }
   .btn-outline:hover {
-    background-color: var(--color-lab-green);
+    background-color: var(--color-lab-teal);
     color: white;
   }
 
@@ -303,18 +304,16 @@
     gap: 0.5rem;
     background-color: #1c8b45;
     color: white;
-    padding: 0.8rem 1.25rem;
-    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     font-weight: 600;
     font-size: 0.875rem;
     text-decoration: none;
     transition: all 0.25s;
-    /* box-shadow: 0 2px 10px rgba(37, 211, 102, 0.35); */
+    justify-content: center;
   }
   .btn-whatsapp:hover {
     background-color: #1c8b45de;
-    /* transform: translateY(-2px); */
-    /* box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45); */
   }
 }
 @layer utilities {
