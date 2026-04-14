@@ -193,9 +193,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border: 2px solid var(--color-lab-green);
+    border: 1px solid var(--color-lab-green);
     color: var(--color-lab-green);
-    padding: 0.56rem 1.5rem;
+    padding: 0.595rem 1.5rem;
     border-radius: 8px;
     font-family: var(--font-body);
     font-weight: 500;

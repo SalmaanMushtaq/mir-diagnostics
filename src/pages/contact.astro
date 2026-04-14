@@ -1,4 +1,5 @@
 ---
+import WhatsAppIcon from "@/components/whatsapImg";
 import Layout from "../layouts/Layout.astro";
 import {
   Phone,
@@ -28,7 +29,7 @@ const contactDetails = [
   {
     icon: Mail,
     label: "Email",
-    value: "mirdiagnowtics256@gmail.com",
+    value: "mirdiagnostics256@gmail.com",
   },
   {
     icon: Clock,
@@ -82,7 +83,7 @@ const contactDetails = [
                 contactDetails.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <div class="flex items-start gap-4 p-5 bg-emerald-50/50 rounded-2xl border border-emerald-100 transition-colors hover:bg-emerald-50">
+                    <div class="flex items-start gap-4 p-5 bg-emerald-50/50 rounded-md border border-emerald-100 transition-colors hover:bg-emerald-50">
                       <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 shadow-sm">
                         <Icon
                           className="w-5 h-5 text-emerald-600"
@@ -105,7 +106,7 @@ const contactDetails = [
             </div>
 
             <div
-              class="bg-rose-50 border border-rose-100 rounded-2xl p-5 shadow-sm"
+              class="bg-rose-50 border border-rose-100 rounded-md p-5 shadow-sm"
               role="alert"
             >
               <div class="flex items-center gap-2 mb-2 text-rose-700">
@@ -128,7 +129,7 @@ const contactDetails = [
           </div>
 
           <div
-            class="lg:col-span-2 bg-white rounded-4xl border border-gray-100 p-8 shadow-xl shadow-emerald-900/5"
+            class="lg:col-span-2 bg-white rounded-xl border border-gray-100 p-8 shadow-md shadow-emerald-900/5"
           >
             <h2 class="font-heading text-2xl font-bold text-emerald-950 mb-2">
               Book an Appointment
@@ -262,19 +263,11 @@ const contactDetails = [
               </div>
 
               <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
-                <button
-                  type="submit"
-                  class="btn-whatsapp w-full sm:w-auto px-10 py-4 shadow-lg shadow-emerald-100 flex items-center justify-center gap-2 group"
-                >
-                  <MessageCircle
-                    className="w-5 h-5 group-hover:scale-110 transition-transform"
-                  />
+                <button type="submit" class="btn-whatsapp">
+                  <WhatsAppIcon />
                   Request via WhatsApp
                 </button>
-                <a
-                  href={`tel:+91${WA}`}
-                  class="btn-outline w-full sm:w-auto px-10 py-3 rounded-full flex items-center justify-center gap-2"
-                >
+                <a href={`tel:+91${WA}`} class="btn-outline">
                   <PhoneCall className="w-4 h-4" />
                   Call Directly
                 </a>
@@ -304,7 +297,7 @@ const contactDetails = [
         </div>
 
         <div
-          class="rounded-[2.5rem] overflow-hidden border border-emerald-100 h-96 relative group shadow-2xl"
+          class="rounded-xl overflow-hidden border border-emerald-100 h-96 relative group shadow-md"
         >
           <div
             class="absolute inset-0 bg-linear-to-br from-emerald-100 to-emerald-50 flex items-center justify-center overflow-hidden"
@@ -314,7 +307,7 @@ const contactDetails = [
             />
             <div class="relative z-10 text-center p-8">
               <div
-                class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-emerald-900/20"
+                class="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-emerald-900/20"
               >
                 <MapPin className="w-8 h-8 text-white animate-bounce" />
               </div>
@@ -331,7 +324,7 @@ const contactDetails = [
                 href="https://maps.google.com/?q=Mir+Diagnostics+Pampore"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 bg-emerald-900 text-white px-8 py-3 rounded-full font-bold hover:bg-emerald-800 transition-all shadow-lg"
+                class="inline-flex items-center gap-2 bg-emerald-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-emerald-800 transition-all shadow-lg"
               >
                 Get Directions <ArrowRight className="w-4 h-4" />
               </a>

@@ -95,7 +95,7 @@ export default function Footer() {
                 },
                 {
                   icon: Mail,
-                  text: "mirdiagnowtics256@gmail.com",
+                  text: "mirdiagnostics256@gmail.com",
                   srLabel: "Email:",
                 },
                 {
@@ -110,7 +110,7 @@ export default function Footer() {
                     <Icon
                       aria-hidden="true"
                       strokeWidth={2}
-                      className="w-4 h-4 mt-0.5 shrink-0 text-green-400"
+                      className="w-4 h-4 mt-0.5 shrink-0 text-white"
                     />
                     <span>
                       <span className="sr-only">{item.srLabel}</span>
@@ -148,10 +148,7 @@ export default function Footer() {
             Serving Kashmir with Excellence
           </p>
           <div className="flex items-center gap-2">
-            <UserCircleIcon
-              className="w-5 h-5 text-emerald-500"
-              aria-hidden="true"
-            />
+            <UserCircleIcon className="w-5 h-5 text-white" aria-hidden="true" />
             <p className="text-xs font-semibold text-white italic">
               Developed by{" "}
               <span className="text-emerald-400">Salmaan Mushtaq</span>
