@@ -2,13 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="USG Services" description="Advanced ultrasound imaging services at Mir Diagnostics – abdominal, pelvic, obstetric, Doppler and more in Srinagar.">
+<Layout
+  title="USG Services"
+  description="Advanced ultrasound imaging services at Mir Diagnostics – abdominal, pelvic, obstetric, Doppler and more in Srinagar."
+>
   <!-- Hero -->
-  <div class="pt-20 bg-gradient-to-br from-[#0a2d4d] to-lab-teal text-white">
+  <div class="pt-20 bg-linear-to-br from-[#0a2d4d] to-lab-teal text-white">
     <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
-      <span class="font-mono text-white/60 text-sm tracking-widest uppercase">— Radiology & Imaging</span>
-      <h1 class="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4">USG Services</h1>
-      <p class="text-white/75 text-xl max-w-2xl">High-definition ultrasound imaging for precise, non-invasive evaluation of your health — performed by experienced radiologists.</p>
+      <span class="font-mono text-white/60 text-sm tracking-widest uppercase"
+        >— Radiology & Imaging</span
+      >
+      <h1 class="font-heading text-5xl md:text-6xl font-bold mt-3 mb-4">
+        USG Services
+      </h1>
+      <p class="text-white/75 text-xl max-w-2xl">
+        High-definition ultrasound imaging for precise, non-invasive evaluation
+        of your health — performed by experienced radiologists.
+      </p>
     </div>
   </div>
 
@@ -20,31 +30,41 @@ import Layout from "../layouts/Layout.astro";
           <span class="section-tag">Understanding USG</span>
           <h2 class="section-title">What is Ultrasound Imaging?</h2>
           <p class="text-muted-foreground leading-relaxed mt-4 mb-4">
-            Ultrasonography (USG) is a safe, painless, non-invasive imaging technique that uses high-frequency sound waves to create real-time images of the body's internal structures. Unlike X-rays, it does not use ionizing radiation, making it safe even during pregnancy.
+            Ultrasonography (USG) is a safe, painless, non-invasive imaging
+            technique that uses high-frequency sound waves to create real-time
+            images of the body's internal structures. Unlike X-rays, it does not
+            use ionizing radiation, making it safe even during pregnancy.
           </p>
           <p class="text-muted-foreground leading-relaxed mb-6">
-            At Mir Diagnostics, our USG department is equipped with latest-generation ultrasound machines including color Doppler and 4D imaging capabilities. All scans are supervised by qualified radiologists and reports are issued promptly.
+            At Mir Diagnostics, our USG department is equipped with
+            latest-generation ultrasound machines including color Doppler and 4D
+            imaging capabilities. All scans are supervised by qualified
+            radiologists and reports are issued promptly.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a href="/contact" class="btn-primary">Book USG Scan</a>
           </div>
         </div>
         <div class="bg-lab-light rounded-2xl p-8 border border-border">
-          <h3 class="font-heading text-xl font-semibold text-lab-blue mb-6">Key Advantages of USG</h3>
+          <h3 class="font-heading text-xl font-semibold text-lab-blue mb-6">
+            Key Advantages of USG
+          </h3>
           <ul class="space-y-4">
-            {[
-              { icon: "✅", text: "Completely safe – no radiation exposure" },
-              { icon: "🕐", text: "Quick procedure, results same day" },
-              { icon: "🩺", text: "Real-time visualization of organs" },
-              { icon: "💊", text: "No special preparation for most scans" },
-              { icon: "🤰", text: "Safe for pregnant women and children" },
-              { icon: "💡", text: "Guides biopsies and other procedures" },
-            ].map((a) => (
-              <li class="flex items-start gap-3">
-                <span class="text-xl">{a.icon}</span>
-                <span class="text-muted-foreground">{a.text}</span>
-              </li>
-            ))}
+            {
+              [
+                { icon: "✅", text: "Completely safe – no radiation exposure" },
+                { icon: "🕐", text: "Quick procedure, results same day" },
+                { icon: "🩺", text: "Real-time visualization of organs" },
+                { icon: "💊", text: "No special preparation for most scans" },
+                { icon: "🤰", text: "Safe for pregnant women and children" },
+                { icon: "💡", text: "Guides biopsies and other procedures" },
+              ].map((a) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-xl">{a.icon}</span>
+                  <span class="text-muted-foreground">{a.text}</span>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
@@ -57,73 +77,96 @@ import Layout from "../layouts/Layout.astro";
       <div class="text-center mb-14">
         <span class="section-tag">Our USG Offerings</span>
         <h2 class="section-title">Ultrasound Scan Types</h2>
-        <p class="section-subtitle mx-auto">We perform a comprehensive range of ultrasound examinations for all clinical needs.</p>
+        <p class="section-subtitle mx-auto">
+          We perform a comprehensive range of ultrasound examinations for all
+          clinical needs.
+        </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {[
-          {
-            title: "Abdominal USG",
-            desc: "Evaluation of liver, gallbladder, spleen, pancreas, kidneys, and other abdominal organs. Detects gallstones, fatty liver, cysts, tumors, and more.",
-            prep: "Fasting for 4–6 hours required",
-            badge: "Most Common",
-          },
-          {
-            title: "Pelvic USG",
-            desc: "Assessment of uterus, ovaries, and pelvic structures in women. Also used for prostate evaluation in men. Identifies fibroids, cysts, and pelvic pathology.",
-            prep: "Full bladder required",
-            badge: "Gynecology",
-          },
-          {
-            title: "Obstetric USG",
-            desc: "Monitoring of fetal growth, placenta, amniotic fluid, and fetal well-being throughout pregnancy. Includes NT scan, anomaly scan, and growth scans.",
-            prep: "As advised by your doctor",
-            badge: "Pregnancy",
-          },
-          {
-            title: "Color Doppler",
-            desc: "Evaluation of blood flow in arteries and veins. Used to detect DVT, carotid stenosis, renal artery stenosis, and vascular malformations.",
-            prep: "No special preparation",
-            badge: "Vascular",
-          },
-          {
-            title: "Thyroid USG",
-            desc: "High-resolution imaging of the thyroid gland to detect nodules, goiter, thyroiditis, and guide fine-needle aspiration biopsy (FNAC).",
-            prep: "No preparation needed",
-            badge: "Endocrine",
-          },
-          {
-            title: "Musculoskeletal USG",
-            desc: "Dynamic imaging of muscles, tendons, ligaments, and joints to evaluate injuries, effusions, and soft tissue masses.",
-            prep: "No preparation needed",
-            badge: "Orthopedic",
-          },
-          {
-            title: "Breast USG",
-            desc: "Assessment of breast lumps, cysts, and masses. Complementary to mammography, especially in younger women with dense breast tissue.",
-            prep: "No preparation needed",
-            badge: "Women's Health",
-          },
-          {
-            title: "Scrotal USG",
-            desc: "Evaluation of testes, epididymis, and scrotal contents for masses, varicocele, hydrocele, and torsion.",
-            prep: "No preparation needed",
-            badge: "Urology",
-          },
-        ].map((s) => (
-          <div class="bg-white rounded-2xl p-6 border border-border card-hover">
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="font-heading text-xl font-semibold text-lab-blue">{s.title}</h3>
-              <span class="bg-lab-teal/10 text-lab-teal text-xs font-medium px-3 py-1 rounded-full shrink-0 ml-3">{s.badge}</span>
+        {
+          [
+            {
+              title: "Abdominal USG",
+              desc: "Evaluation of liver, gallbladder, spleen, pancreas, kidneys, and other abdominal organs. Detects gallstones, fatty liver, cysts, tumors, and more.",
+              prep: "Fasting for 4–6 hours required",
+              badge: "Most Common",
+            },
+            {
+              title: "Pelvic USG",
+              desc: "Assessment of uterus, ovaries, and pelvic structures in women. Also used for prostate evaluation in men. Identifies fibroids, cysts, and pelvic pathology.",
+              prep: "Full bladder required",
+              badge: "Gynecology",
+            },
+            {
+              title: "Obstetric USG",
+              desc: "Monitoring of fetal growth, placenta, amniotic fluid, and fetal well-being throughout pregnancy. Includes NT scan, anomaly scan, and growth scans.",
+              prep: "As advised by your doctor",
+              badge: "Pregnancy",
+            },
+            {
+              title: "Color Doppler",
+              desc: "Evaluation of blood flow in arteries and veins. Used to detect DVT, carotid stenosis, renal artery stenosis, and vascular malformations.",
+              prep: "No special preparation",
+              badge: "Vascular",
+            },
+            {
+              title: "Thyroid USG",
+              desc: "High-resolution imaging of the thyroid gland to detect nodules, goiter, thyroiditis, and guide fine-needle aspiration biopsy (FNAC).",
+              prep: "No preparation needed",
+              badge: "Endocrine",
+            },
+            {
+              title: "Musculoskeletal USG",
+              desc: "Dynamic imaging of muscles, tendons, ligaments, and joints to evaluate injuries, effusions, and soft tissue masses.",
+              prep: "No preparation needed",
+              badge: "Orthopedic",
+            },
+            {
+              title: "Breast USG",
+              desc: "Assessment of breast lumps, cysts, and masses. Complementary to mammography, especially in younger women with dense breast tissue.",
+              prep: "No preparation needed",
+              badge: "Women's Health",
+            },
+            {
+              title: "Scrotal USG",
+              desc: "Evaluation of testes, epididymis, and scrotal contents for masses, varicocele, hydrocele, and torsion.",
+              prep: "No preparation needed",
+              badge: "Urology",
+            },
+          ].map((s) => (
+            <div class="bg-white rounded-2xl p-6 border border-border card-hover">
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="font-heading text-xl font-semibold text-lab-blue">
+                  {s.title}
+                </h3>
+                <span class="bg-lab-teal/10 text-lab-teal text-xs font-medium px-3 py-1 rounded-full shrink-0 ml-3">
+                  {s.badge}
+                </span>
+              </div>
+              <p class="text-muted-foreground text-sm leading-relaxed mb-4">
+                {s.desc}
+              </p>
+              <div class="flex items-center gap-2 pt-3 border-t border-border">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width={2}
+                  class="w-4 h-4 text-lab-gold"
+                >
+                  <path
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <span class="text-xs text-muted-foreground font-medium">
+                  {s.prep}
+                </span>
+              </div>
             </div>
-            <p class="text-muted-foreground text-sm leading-relaxed mb-4">{s.desc}</p>
-            <div class="flex items-center gap-2 pt-3 border-t border-border">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} class="w-4 h-4 text-lab-gold">
-                <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span class="text-xs text-muted-foreground font-medium">{s.prep}</span>
-            </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
@@ -136,24 +179,55 @@ import Layout from "../layouts/Layout.astro";
         <h2 class="section-title">Our Imaging Equipment</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          { name: "GE LOGIQ E10", type: "Premium Ultrasound System", features: ["Crystal-clear imaging", "Color Doppler", "Elastography", "4D capability"] },
-          { name: "Philips EPIQ 7", type: "High-End Doppler Unit", features: ["nSIGHT imaging", "Advanced Doppler", "Anatomical intelligence", "Wireless connectivity"] },
-          { name: "Samsung RS85", type: "Multipurpose Scanner", features: ["Crystal Vue 3D/4D", "S-Shearwave imaging", "Micro-vascular imaging", "AI-assisted analysis"] },
-        ].map((e) => (
-          <div class="bg-lab-blue text-white rounded-2xl p-7">
-            <div class="font-mono text-lab-teal text-sm tracking-widest uppercase mb-2">{e.type}</div>
-            <h3 class="font-heading text-2xl font-bold mb-4">{e.name}</h3>
-            <ul class="space-y-2">
-              {e.features.map((f) => (
-                <li class="flex items-center gap-2 text-white/70 text-sm">
-                  <span class="w-1.5 h-1.5 rounded-full bg-lab-teal" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {
+          [
+            {
+              name: "GE LOGIQ E10",
+              type: "Premium Ultrasound System",
+              features: [
+                "Crystal-clear imaging",
+                "Color Doppler",
+                "Elastography",
+                "4D capability",
+              ],
+            },
+            {
+              name: "Philips EPIQ 7",
+              type: "High-End Doppler Unit",
+              features: [
+                "nSIGHT imaging",
+                "Advanced Doppler",
+                "Anatomical intelligence",
+                "Wireless connectivity",
+              ],
+            },
+            {
+              name: "Samsung RS85",
+              type: "Multipurpose Scanner",
+              features: [
+                "Crystal Vue 3D/4D",
+                "S-Shearwave imaging",
+                "Micro-vascular imaging",
+                "AI-assisted analysis",
+              ],
+            },
+          ].map((e) => (
+            <div class="bg-lab-blue text-white rounded-2xl p-7">
+              <div class="font-mono text-lab-teal text-sm tracking-widest uppercase mb-2">
+                {e.type}
+              </div>
+              <h3 class="font-heading text-2xl font-bold mb-4">{e.name}</h3>
+              <ul class="space-y-2">
+                {e.features.map((f) => (
+                  <li class="flex items-center gap-2 text-white/70 text-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-lab-teal" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -161,9 +235,16 @@ import Layout from "../layouts/Layout.astro";
   <!-- CTA -->
   <section class="py-16 bg-lab-teal text-white text-center">
     <div class="max-w-xl mx-auto px-4">
-      <h2 class="font-heading text-3xl font-bold mb-3">Schedule Your USG Today</h2>
-      <p class="text-white/75 mb-7">Walk-ins welcome. Appointments ensure minimal waiting time.</p>
-      <a href="/contact" class="bg-white text-lab-teal px-8 py-4 rounded-lg font-semibold hover:bg-lab-blue hover:text-white transition-all duration-300 shadow-lg">
+      <h2 class="font-heading text-3xl font-bold mb-3">
+        Schedule Your USG Today
+      </h2>
+      <p class="text-white/75 mb-7">
+        Walk-ins welcome. Appointments ensure minimal waiting time.
+      </p>
+      <a
+        href="/contact"
+        class="bg-white text-lab-teal px-8 py-4 rounded-lg font-semibold hover:bg-lab-blue hover:text-white transition-all duration-300 shadow-lg"
+      >
         Book Your Scan
       </a>
     </div>
