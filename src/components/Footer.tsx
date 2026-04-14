@@ -5,6 +5,7 @@ import {
   Clock,
   FlaskConical,
   ChevronRight,
+  UserCircleIcon,
 } from "lucide-react";
 
 export default function Footer() {
@@ -146,6 +147,16 @@ export default function Footer() {
           >
             Serving Kashmir with Excellence
           </p>
+          <div className="flex items-center gap-2">
+            <UserCircleIcon
+              className="w-5 h-5 text-emerald-500"
+              aria-hidden="true"
+            />
+            <p className="text-xs font-semibold text-white italic">
+              Developed by{" "}
+              <span className="text-emerald-400">Salmaan Mushtaq</span>
+            </p>
+          </div>
         </div>
       </section>
     </footer>
