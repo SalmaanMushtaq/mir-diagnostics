@@ -320,7 +320,7 @@ const contactStats = [
                           </div>
                         </div>
 
-                        <div class="rounded-2xl bg-emerald-50 px-3 py-2 text-right">
+                        <div class="rounded-md bg-emerald-50 px-3 py-2 text-right">
                           <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-700/70">
                             You Save
                           </p>
@@ -334,9 +334,9 @@ const contactStats = [
                         href={`https://wa.me/${WA}?text=${waMsg}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class={`inline-flex w-full items-center justify-center gap-2 rounded-3xl px-5 py-3.5 text-sm font-bold transition-all duration-300 ${
+                        class={`inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3.5 text-sm font-bold transition-all duration-300 ${
                           pkg.highlight
-                            ? "bg-emerald-600 text-white shadow-lg shadow-emerald-200 hover:bg-emerald-700"
+                            ? "bg-emerald-600 text-white shadow-emerald-200 hover:bg-emerald-700"
                             : "bg-emerald-950 text-white hover:bg-emerald-800"
                         }`}
                       >
@@ -352,10 +352,7 @@ const contactStats = [
         </div>
 
         <div class="mt-12 text-center">
-          <a
-            href="/services#packages"
-            class="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-8 py-3.5 text-sm font-bold text-emerald-900 shadow-sm transition-all hover:border-emerald-500 hover:bg-emerald-50"
-          >
+          <a href="/services#packages" class="btn-outline">
             View All Packages
             <ArrowRight
               className="h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -390,14 +387,14 @@ const contactStats = [
             <div class="flex flex-wrap gap-4">
               <a
                 href={`https://wa.me/${WA}?text=Home%20Collection%20Request`}
-                class="btn-whatsapp px-8 w-60 justify-center"
+                class="btn-whatsapp px-8 w-60 justify-center rounded-lg"
               >
                 <WhatsAppIcon />
                 Book Home Collection</a
               >
               <a
                 href="tel:+917006087182"
-                class="w-60 border-2 justify-center border-white/30 hover:bg-white/10 px-8 py-3 rounded-full font-bold transition-all flex items-center gap-2 focus:ring-2 focus:ring-white"
+                class="w-60 btn-outline border-white text-white hover:bg-white/10"
               >
                 <PhoneCall className="w-4 h-4 text-emerald-400" /> 7006087182
               </a>
@@ -477,7 +474,7 @@ const contactStats = [
                 <WhatsAppIcon />
                 Book USG Appointment</a
               >
-              <a href="/services#usg" class="btn-outline rounded-3xl"
+              <a href="/services#usg" class="btn-outline"
                 >View USG Services <MoveRight className="w-5 h-4" />
               </a>
             </div>
@@ -521,9 +518,7 @@ const contactStats = [
                 ))
               }
             </div>
-            <a href="/services#usg" class="btn-primary inline-block rounded-3xl"
-              >Book USG Scan</a
-            >
+            <a href="/services#usg" class="btn-outline">Book USG Scan</a>
           </div>
           <div class="rounded-xl md:rounded-2xl overflow-hidden shadow-md">
             <img
@@ -614,7 +609,7 @@ const contactStats = [
     <!-- Book Your Test -->
     <section class="py-20 container-tight md:px-4">
       <div
-        class="md:rounded-3xl p-6 md:p-10 text-white text-center shadow-2xl bg-linear-to-br from-emerald-800 to-emerald-600"
+        class="md:rounded-xl p-6 md:p-10 text-center section-padding bg-emerald-900 text-white"
       >
         <h2
           class="text-3xl font-bold mb-4"
@@ -631,14 +626,14 @@ const contactStats = [
         <div class="flex flex-wrap gap-4 justify-center">
           <a
             href={`https://wa.me/${WA}?text=Hello`}
-            class="btn-whatsapp px-10 py-3 text-lg"
+            class="btn-whatsapp w-50.5"
           >
             <WhatsAppIcon />
             Book on WhatsApp
           </a>
           <a
             href="tel:+917006087182"
-            class="border-2 border-white/30 hover:bg-white/10 px-10 py-3 rounded-full font-bold transition-all flex items-center gap-2"
+            class="btn-outline text-white border-white hover:bg-white/10 w-50.5"
           >
             <PhoneCall className="w-4 h-4" /> Call Now
           </a>
