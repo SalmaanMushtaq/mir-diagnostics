@@ -21,36 +21,16 @@ export default function Footer() {
       }}
     >
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Section */}
           <section className="lg:col-span-2" aria-labelledby="footer-brand">
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
-                aria-hidden="true"
-              >
-                <FlaskConical className="w-6 h-6 text-white" strokeWidth={2} />
-              </div>
-              <div>
-                <h2
-                  id="footer-brand"
-                  className="font-bold text-xl"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
-                  Mir Diagnostics
-                </h2>
-                <p
-                  className="text-xs uppercase tracking-wider"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    color: "rgba(255,255,255,0.85)",
-                  }}
-                >
-                  Medical Laboratory
-                </p>
-              </div>
+              <img
+                src="/mir-diagnostics-logo.png"
+                alt="Logo"
+                className="h-auto w-96  brightness-0 invert"
+              />
             </div>
             <p
               className="text-sm leading-relaxed max-w-sm"
