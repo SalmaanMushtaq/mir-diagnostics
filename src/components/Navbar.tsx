@@ -79,20 +79,21 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
           visibility: open ? "visible" : "hidden",
         }}
       >
-        <div className="flex items-center justify-between p-5 border-b border-white/10">
+        <div className="flex items-center justify-between p-2 border-b border-white/10">
           <div>
-            <div className="font-bold text-white text-lg">Mir Diagnostics</div>
-            <div className="text-[10px] uppercase tracking-widest text-white/50">
-              Medical Laboratory
-            </div>
+            <img
+              src="/mir-diagnostics-logo.png"
+              alt="Logo"
+              className="h-14 brightness-0 invert"
+            />
           </div>
           <button
             ref={closeBtnRef}
             onClick={() => setOpen(false)}
             aria-label="Close menu"
-            className="p-2 bg-white/10 rounded-lg cursor-pointer text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
+            className="p-1 bg-white/10 rounded-lg cursor-pointer text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
           >
-            <Plus className="w-6 h-6 rotate-45" />
+            <Plus className="w-5 h-5 rotate-45" />
           </button>
         </div>
 
@@ -137,15 +138,11 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             className="flex items-center gap-3"
             aria-label="Mir Diagnostics Home"
           >
-            <div
-              className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center border border-white/30"
-              aria-hidden="true"
-            >
-              <span className="text-white font-bold">M</span>
-            </div>
-            <span className="text-white font-bold text-xl tracking-tight">
-              Mir Diagnostics
-            </span>
+            <img
+              src="/mir-diagnostics-logo.png"
+              alt="Logo"
+              className="w-60 h-20 brightness-0 invert"
+            />
           </a>
 
           <nav
