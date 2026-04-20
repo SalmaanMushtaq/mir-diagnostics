@@ -12,9 +12,12 @@ interface Props {
 
 const {
   title,
-  description = "Mir Diagnostics – Advanced medical laboratory and USG imaging services in Pampore, Kashmir.",
+  description = "Mir Diagnostics Pampore offers blood tests, health packages, home sample collection, and USG imaging services in Pampore, Kashmir.",
 } = Astro.props;
+
 const currentPath = Astro.url.pathname;
+const siteUrl = "https://mirdiagnostics.in";
+const canonicalUrl = `${siteUrl}${Astro.url.pathname === "/" ? "/" : Astro.url.pathname}`;
 ---
 
 <!doctype html>
@@ -23,8 +26,47 @@ const currentPath = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <title>{title} | Mir Diagnostics</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <title>{title}</title>
+
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Mir Diagnostics" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mir Diagnostics" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        name: "Mir Diagnostics",
+        url: siteUrl,
+        image: `${siteUrl}/og-image.jpg`,
+        telephone: "+917006087182",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Khrew Bus Stop, Namblabal",
+          addressLocality: "Pampore",
+          addressRegion: "Jammu and Kashmir",
+          postalCode: "192121",
+          addressCountry: "IN",
+        },
+        areaServed: ["Pampore", "Khrew", "Namblabal"],
+      })}
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,17 +74,16 @@ const currentPath = Astro.url.pathname;
       rel="stylesheet"
     />
   </head>
+
   <body>
     <Navbar currentPath={currentPath} client:load />
 
-    <!-- Apply the slide transition with custom duration -->
     <main transition:animate={slide({ duration: "0.5s" })} class="mt-28">
       <slot />
     </main>
 
     <Footer client:load />
     <FloatingActions client:load />
-
     <ClientRouter />
   </body>
 </html>
