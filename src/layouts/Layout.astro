@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingActions from "../components/FloatingActions";
+import { ClientRouter, slide } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -33,10 +34,15 @@ const currentPath = Astro.url.pathname;
   </head>
   <body>
     <Navbar currentPath={currentPath} client:load />
-    <main>
+
+    <!-- Apply the slide transition with custom duration -->
+    <main transition:animate={slide({ duration: "0.5s" })} class="mt-28">
       <slot />
     </main>
+
     <Footer client:load />
     <FloatingActions client:load />
+
+    <ClientRouter />
   </body>
 </html>

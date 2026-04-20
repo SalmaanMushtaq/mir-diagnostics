@@ -128,7 +128,9 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
           scrolled ? "shadow-lg" : ""
         }`}
         style={{
-          backgroundColor: scrolled ? "rgb(11 38 24)" : "transparent",
+          background: scrolled
+            ? "rgb(11 38 24)"
+            : "linear-gradient( 135deg, var(--color-lab-green), var(--color-lab-teal) )",
           borderBottom: "1px solid rgba(255, 255, 255, 0.125)",
         }}
       >
