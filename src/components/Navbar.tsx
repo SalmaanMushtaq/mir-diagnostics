@@ -82,9 +82,12 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         <div className="flex items-center justify-between p-2 border-b border-white/10">
           <div>
             <img
-              src="/mir-diagnostics-logo.png"
+              src="/mir-diagnostics-logo.webp"
               alt="Logo"
               className="h-14 brightness-0 invert"
+              width="220"
+              height="56"
+              loading="eager"
             />
           </div>
           <button
@@ -141,9 +144,12 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             aria-label="Mir Diagnostics Home"
           >
             <img
-              src="/mir-diagnostics-logo.png"
+              src="/mir-diagnostics-logo.webp"
               alt="Logo"
-              className="w-60 h-20 brightness-0 invert"
+              className="w-60 h-20 brightness-0 invert aspect-989/252 "
+              width="240"
+              height="80"
+              loading="eager"
             />
           </a>
 

@@ -28,7 +28,7 @@ export default function Footer() {
           <section className="lg:col-span-2" aria-labelledby="footer-brand">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/mir-diagnostics-logo.png"
+                src="/mir-diagnostics-logo.webp"
                 alt="Logo"
                 className="h-auto w-96  brightness-0 invert"
               />
