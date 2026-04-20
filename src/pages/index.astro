@@ -484,55 +484,6 @@ const contactStats = [
         </div>
       </div>
     </section>
-    <!-- USG Facilities Section -->
-    <section
-      class="section-padding bg-emerald-50/50"
-      aria-labelledby="usg-title"
-    >
-      <div class="container-tight">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="section-tag">Imaging Centre</span>
-            <h2 id="usg-title" class="section-title mb-6">
-              USG Facilities Available
-            </h2>
-            <div class="grid grid-cols-2 gap-3 mb-8">
-              {
-                [
-                  "3D/4D Ultrasounds",
-                  "USG Abdomen",
-                  "USG Pelvic Organs",
-                  "USG Chest",
-                  "Obstetric Ultrasound",
-                  "Dating & Cardiac Scan",
-                  "NT/NB Scan",
-                  "Level-II Scan (Fetal)",
-                  "Doppler",
-                  "High Resolution",
-                  "USG Scrotum",
-                  "MSK USG",
-                  "USG Neck",
-                ].map((f) => (
-                  <div class="flex items-center gap-2 text-xs py-2 px-3 rounded-lg bg-white border border-gray-100 shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />{" "}
-                    {f}
-                  </div>
-                ))
-              }
-            </div>
-            <a href="/services#usg" class="btn-outline">Book USG Scan</a>
-          </div>
-          <div class="rounded-xl md:rounded-2xl overflow-hidden shadow-md">
-            <img
-              src="/usg-facilities.jpg"
-              alt="Advanced USG diagnostic equipment"
-              class="w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- WHy Section -->
     <section class="section-padding bg-emerald-900 text-white">
@@ -600,6 +551,55 @@ const contactStats = [
             <img
               src="/lab-reception.jpg"
               alt="Reception area of Mir Diagnostic Centre"
+              class="w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- USG Facilities Section -->
+    <section
+      class="section-padding bg-emerald-50/50"
+      aria-labelledby="usg-title"
+    >
+      <div class="container-tight">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="section-tag">Imaging Centre</span>
+            <h2 id="usg-title" class="section-title mb-6">
+              USG Facilities Available
+            </h2>
+            <div class="grid grid-cols-2 gap-3 mb-8">
+              {
+                [
+                  "3D/4D Ultrasounds",
+                  "USG Abdomen",
+                  "USG Pelvic Organs",
+                  "USG Chest",
+                  "Obstetric Ultrasound",
+                  "Dating & Cardiac Scan",
+                  "NT/NB Scan",
+                  "Level-II Scan (Fetal)",
+                  "Doppler",
+                  "High Resolution",
+                  "USG Scrotum",
+                  "MSK USG",
+                  "USG Neck",
+                ].map((f) => (
+                  <div class="flex items-center gap-2 text-xs py-2 px-3 rounded-lg bg-white border border-gray-100 shadow-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />{" "}
+                    {f}
+                  </div>
+                ))
+              }
+            </div>
+            <a href="/services#usg" class="btn-outline">Book USG Scan</a>
+          </div>
+          <div class="rounded-xl md:rounded-2xl overflow-hidden shadow-md">
+            <img
+              src="/usg-facilities.jpg"
+              alt="Advanced USG diagnostic equipment"
               class="w-full object-cover"
               loading="lazy"
             />
