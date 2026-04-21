@@ -148,7 +148,13 @@ export default function Footer() {
             Serving Kashmir with Excellence
           </p>
           <div className="flex items-center gap-2">
-            <UserCircleIcon className="w-5 h-5 text-white" aria-hidden="true" />
+            <a
+              href="mailto:khandaysalmaan00@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Mail className="w-5 h-5 text-white" aria-hidden="true" />
+            </a>
             <p className="text-xs font-semibold text-white italic">
               Developed by{" "}
               <span className="text-emerald-400">Salmaan Mushtaq</span>
