@@ -7,7 +7,7 @@ import Layout from "../layouts/Layout.astro";
   description="Advanced ultrasound imaging services at Mir Diagnostics – abdominal, pelvic, obstetric, Doppler and more in Srinagar."
 >
   <!-- Hero -->
-  <div class="pt-20 bg-linear-to-br from-[#0a2d4d] to-lab-teal text-white">
+  <div class="pt-20 bg-linear-to-br from-lab-green to-lab-teal text-white">
     <div class="max-w-7xl mx-auto px-4 md:px-8 py-20">
       <span class="font-mono text-white/60 text-sm tracking-widest uppercase"
         >— Radiology & Imaging</span
@@ -45,8 +45,8 @@ import Layout from "../layouts/Layout.astro";
             <a href="/contact" class="btn-primary">Book USG Scan</a>
           </div>
         </div>
-        <div class="bg-lab-light rounded-2xl p-8 border border-border">
-          <h3 class="font-heading text-xl font-semibold text-lab-blue mb-6">
+        <div class="bg-lab-light rounded-2xl p-8 border border-lab-teal/20">
+          <h3 class="font-heading text-xl font-semibold text-lab-green mb-6">
             Key Advantages of USG
           </h3>
           <ul class="space-y-4">
@@ -134,9 +134,9 @@ import Layout from "../layouts/Layout.astro";
               badge: "Urology",
             },
           ].map((s) => (
-            <div class="bg-white rounded-2xl p-6 border border-border card-hover">
+            <div class="bg-white rounded-2xl p-6 border border-lab-teal/20 card-hover">
               <div class="flex items-start justify-between mb-3">
-                <h3 class="font-heading text-xl font-semibold text-lab-blue">
+                <h3 class="font-heading text-xl font-semibold text-lab-green">
                   {s.title}
                 </h3>
                 <span class="bg-lab-teal/10 text-lab-teal text-xs font-medium px-3 py-1 rounded-full shrink-0 ml-3">
@@ -146,7 +146,7 @@ import Layout from "../layouts/Layout.astro";
               <p class="text-muted-foreground text-sm leading-relaxed mb-4">
                 {s.desc}
               </p>
-              <div class="flex items-center gap-2 pt-3 border-t border-border">
+              <div class="flex items-center gap-2 pt-3 border-t border-lab-teal/20">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -212,7 +212,7 @@ import Layout from "../layouts/Layout.astro";
               ],
             },
           ].map((e) => (
-            <div class="bg-lab-blue text-white rounded-2xl p-7">
+            <div class="bg-lab-dark text-white rounded-2xl p-7">
               <div class="font-mono text-lab-teal text-sm tracking-widest uppercase mb-2">
                 {e.type}
               </div>
@@ -243,7 +243,7 @@ import Layout from "../layouts/Layout.astro";
       </p>
       <a
         href="/contact"
-        class="bg-white text-lab-teal px-8 py-4 rounded-lg font-semibold hover:bg-lab-blue hover:text-white transition-all duration-300 shadow-lg"
+        class="bg-white text-lab-teal px-8 py-4 rounded-lg font-semibold hover:bg-lab-green hover:text-white transition-all duration-300 shadow-lg"
       >
         Book Your Scan
       </a>
