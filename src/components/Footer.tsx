@@ -1,24 +1,15 @@
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  FlaskConical,
-  ChevronRight,
-  UserCircleIcon,
-} from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer
+      className="bg-lab-dark text-white"
       style={{
         backdropFilter: "blur(16px) saturate(180%)",
         WebkitBackdropFilter: "blur(16px) saturate(180%)",
-        backgroundColor: "rgb(11 38 24)",
         borderTop: "1px solid rgba(255, 255, 255, 0.125)",
-        color: "white",
       }}
     >
       {/* Main Footer Content */}
@@ -30,7 +21,7 @@ export default function Footer() {
               <img
                 src="/mir-diagnostics-logo.webp"
                 alt="Logo"
-                className="h-auto w-96  brightness-0 invert"
+                className="h-auto w-48 sm:w-64 lg:w-80 brightness-0 invert"
               />
             </div>
             <p
@@ -152,6 +143,7 @@ export default function Footer() {
               href="mailto:khandaysalmaan00@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Developer Name"
             >
               <Mail className="w-5 h-5 text-white" aria-hidden="true" />
             </a>

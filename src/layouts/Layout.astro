@@ -73,7 +73,10 @@ const canonicalUrl = `${siteUrl}${Astro.url.pathname === "/" ? "/" : Astro.url.p
   <body>
     <Navbar currentPath={currentPath} client:load />
 
-    <main transition:animate={slide({ duration: "0.5s" })} class="mt-28">
+    <main
+      transition:animate={slide({ duration: "0.5s" })}
+      class="pt-20 md:pt-28"
+    >
       <slot />
     </main>
 

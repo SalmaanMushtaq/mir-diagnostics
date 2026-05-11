@@ -14,22 +14,23 @@
     format("woff2");
   font-display: swap;
   font-weight: 100 900;
-  font-style: italic;
+  font-style: normal;
 }
 @font-face {
-  font-family: "DM Mono";
+  font-family: "Roboto";
   src: url("/src/assets/fonts/Roboto/static/Roboto-Regular.ttf") format("woff2");
   font-display: swap;
   font-weight: 100 900;
-  font-style: italic;
+  font-style: normal;
 }
 /* ── Tailwind v4 theme tokens ── */
 @theme {
   /* Brand colors — Green palette */
-  --color-lab-green: #005f2d; /* deep forest green  */
-  --color-lab-teal: #16a34a; /* vibrant mid-green  */
-  --color-lab-light: #ecfdf5; /* mint light bg      */
-  --color-lab-gold: #f59e0b; /* amber accent       */
+  --color-lab-green: #005f2d;
+  --color-lab-teal: #16a34a;
+  --color-lab-light: #ecfdf5;
+  --color-lab-gold: #f59e0b;
+  --color-lab-dark: #0b2618;
 
   /* shadcn semantic tokens */
   --color-background: oklch(98% 0.008 150);
@@ -50,9 +51,9 @@
   --color-ring: oklch(32% 0.12 155);
 
   /* Fonts */
-  --font-heading: "Inter", Georgia, serif;
-  --font-body: "Playfair", sans-serif;
-  --font-mono: "DM Mono", monospace;
+  --font-heading: "Inter", "Segoe UI", sans-serif;
+  --font-body: "Playfair", Georgia, serif;
+  --font-mono: "Roboto", "Consolas", monospace;
 
   /* Border radius */
   --radius-sm: 0.25rem;
