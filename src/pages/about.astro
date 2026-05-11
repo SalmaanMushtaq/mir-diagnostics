@@ -6,7 +6,6 @@ import {
   Lightbulb,
   Handshake,
   ArrowRight,
-  ShieldCheck,
   ChevronRight,
 } from "lucide-react";
 
@@ -108,7 +107,7 @@ const testCategories = [
   <section id="main-content">
     <!-- About Hero Title Section -->
     <section
-      class="pt-20 bg-linear-to-br from-[#0D6B3A] to-[#16A34A] text-white"
+      class="pt-20 bg-linear-to-br from-lab-green to-lab-teal text-white"
       aria-labelledby="about-hero-title"
     >
       <div class="max-w-7xl mx-auto section-padding py-20">
@@ -246,38 +245,5 @@ const testCategories = [
       </div>
     </section>
 
-    <!-- <section class="section-padding bg-white" aria-labelledby="cert-heading">
-      <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <div class="text-center mb-12">
-          <span class="section-tag" aria-hidden="true">Quality Assurance</span>
-          <h2 id="cert-heading" class="section-title">
-            Accreditations & Standards
-          </h2>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {
-            [
-              "NABL Accredited",
-              "ISO 15189:2022",
-              "CAP Certified",
-              "Govt. Empanelled",
-            ].map((a) => (
-              <div class="text-center p-8 bg-white rounded-2xl border border-emerald-100 hover:border-emerald-400 hover:bg-emerald-50/30 transition-all group">
-                <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <ShieldCheck
-                    className="w-7 h-7 text-emerald-600"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                </div>
-                <div class="font-heading font-bold text-emerald-900 text-sm tracking-tight">
-                  {a}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section> -->
   </section>
 </Layout>

@@ -9,7 +9,7 @@ export default function FloatingActions() {
         href={`https://wa.me/${WA_NUMBER}?text=Hello%2C%20I%20would%20like%20to%20book%20a%20test%20at%20Mir%20Diagnostics%2C%20Pampore.`}
         target="_blank"
         rel="noopener noreferrer"
-        className="fab-btn fab-wa w-34"
+        className="fab-btn fab-wa w-auto px-3 sm:px-5"
         aria-label="Chat on WhatsApp"
       >
         <svg
@@ -24,7 +24,7 @@ export default function FloatingActions() {
       </a>
       <a
         href={`tel:${PHONE}`}
-        className="fab-btn fab-call w-34"
+        className="fab-btn fab-call w-auto px-3 sm:px-5"
         aria-label="Call us"
       >
         <PhoneCall className="w-5 h-5 shrink-0" />

@@ -112,7 +112,7 @@ export default function HeroCarousel() {
   }, [emblaApi]);
 
   return (
-    <section className="relative h-screen min-h-150 overflow-hidden">
+    <section className="relative h-screen min-h-125 md:min-h-150 overflow-hidden">
       <div className="embla h-full" ref={emblaRef}>
         <div className="embla__container h-full">
           {slides.map((slide, i) => (
@@ -222,35 +222,6 @@ export default function HeroCarousel() {
           ))}
         </div>
       </div>
-
-      {/* Dots */}
-      {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => scrollTo(i)}
-            className="transition-all duration-300 rounded-full"
-            style={{
-              width: current === i ? "2rem" : "0.625rem",
-              height: "0.625rem",
-              backgroundColor:
-                current === i ? "white" : "rgba(255,255,255,0.4)",
-            }}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div> */}
-
-      {/* Scroll indicator */}
-      {/* <div className="absolute bottom-8 right-8 z-20 hidden md:flex flex-col items-center gap-2 text-white/50">
-        <span
-          className="text-xs tracking-widest rotate-90 origin-center mb-4"
-          style={{ fontFamily: "var(--font-mono)" }}
-        >
-          scroll
-        </span>
-        <div className="w-px h-12 bg-white/30" />
-      </div> */}
     </section>
   );
 }

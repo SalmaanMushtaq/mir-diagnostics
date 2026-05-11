@@ -73,7 +73,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         className="fixed top-0 right-0 bottom-0 z-999 shadow-2xl transition-transform duration-300 ease-in-out"
         style={{
           width: "min(82vw, 300px)",
-          background: "rgb(6, 60, 28)",
+          background: "var(--color-lab-green)",
           backdropFilter: "blur(20px)",
           transform: open ? "translateX(0)" : "translateX(100%)",
           visibility: open ? "visible" : "hidden",
@@ -112,7 +112,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
                 className={`p-3 rounded-xl transition-colors link-underline ${
                   isActive
                     ? "bg-white/20 text-white font-semibold"
-                    : "text-white/70"
+                    : "text-white/85"
                 }`}
               >
                 {link.label}
@@ -132,7 +132,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
         }`}
         style={{
           background: scrolled
-            ? "rgb(11 38 24)"
+            ? "var(--color-lab-dark)"
             : "linear-gradient( 135deg, var(--color-lab-green), var(--color-lab-teal) )",
           borderBottom: "1px solid rgba(255, 255, 255, 0.125)",
         }}
@@ -146,7 +146,7 @@ export default function Navbar({ currentPath }: { currentPath: string }) {
             <img
               src="/mir-diagnostics-logo.webp"
               alt="Logo"
-              className="w-60 h-20 brightness-0 invert aspect-989/252 "
+              className="w-40 sm:w-48 md:w-60 h-14 sm:h-16 md:h-20 brightness-0 invert aspect-989/252"
               width="240"
               height="80"
               loading="eager"
